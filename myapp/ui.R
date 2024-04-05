@@ -2,8 +2,8 @@
 header <- dashboardHeader(
   
   #title
-  title = "Place Title Here",
-  titleWidth = 400 #adjust accordingly
+  title = "Restoration of Chinook Salmon in the Stillaguamish River Basin",
+  titleWidth = 550 #adjust accordingly
 ) # END dashboardHeader
 
 #........................dashboardSidebar........................
@@ -15,6 +15,7 @@ sidebar <- dashboardSidebar(
   menuItem(text = "Cost", tabName = "cost", icon = icon("money-bill-1")),
   menuItem(text = "Benefits", tabName = "ben", icon = icon("fish")),
   menuItem(text = "Cost Effectiveness", tabName = "ce", icon = icon("dollar-sign")),
+  menuItem(text = "Cobenefits", tabName = "ce", icon = icon("fish")),
   menuItem(text = "Demographic Info", tabName = "demo", icon = icon("person"))
   
 )#END dashboardsidebar
@@ -31,13 +32,16 @@ body <- dashboardBody(
             # left-hand column ----
             column(width = 6,
                    
-                   # background info box ----
-                   box(width = NULL,
-                       
-                       "background info here"
-                       
-                   ), # END background info box
-                   
+                   #background info box
+                   box(width=NULL, #takes on width of the column
+                       title = tagList(icon("water"), 
+                                       strong("Monitoring Fish Creek Watershed")),
+                       includeMarkdown("text/intro.md"), 
+                       tags$img(src="final_ps_map.jpeg", ##saved in www
+                                alt="A map of Northern Alaska showing Fish Creek Watershed located within the National Petroleum Reserve.",
+                                style="max-width:100%;") #css to ensure the map is the correct size
+                   ) #END background box
+                  
             ), # END left-hand column
             
             # right-hand column ----
@@ -74,7 +78,7 @@ body <- dashboardBody(
     # map tabItem ----
     tabItem(tabName = "map",
             
-           "map here"
+            "map here"
             
     ), # END map tabItem
     
@@ -149,6 +153,13 @@ body <- dashboardBody(
             ) # END fluidRow
             
     ), # END ce tabItem
+    
+    # cobenefits tabItem ----
+    tabItem(tabName = "cobens",
+            
+            "cobenefits info here"
+            
+    ), # END coben tabItem
     
     # demo tabItem ----
     tabItem(tabName = "demo",
