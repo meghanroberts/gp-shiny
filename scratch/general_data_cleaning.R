@@ -6,7 +6,7 @@ library(sf)
 #read in data
 all_cost_ben_og <- st_read(here("myapp", "data", "not_processed", "all_cost_benefit.shp"))
 additional_costs<-read_csv(here("myapp", "data", "not_processed","ag_fp_cost.csv"))
-demo_shp <- st_read(here("myapp", "data","processed", "demo.shp"))
+demo_shp <- st_read(here("myapp", "data","not_processed", "demo.shp"))
 
 # editing master df
 all_cost_ben<-all_cost_ben_og %>%
@@ -35,3 +35,9 @@ additional_costs<-additional_costs %>% select(c(subbasin_name, total_subba_area_
 all_cost_ben<-left_join(all_cost_ben, additional_costs)
 write_sf(all_cost_ben, here("myapp", "data", "processed", "master.shp"))
 master <- st_read(here("myapp", "data", "processed", "master.shp"))
+
+#reprojecting demo to be in the correct projection for map
+# Transform to WGS84 (EPSG:4326)
+wgs84_crs <- st_crs("+proj=longlat +datum=WGS84")
+demo_projected <- st_transform(demo, wgs84_crs)
+write_sf(demo_projected, here("myapp", "data", "processed", "demo_transformed.shp"))
