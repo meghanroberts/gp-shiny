@@ -78,7 +78,9 @@ body <- dashboardBody(
     # map tabItem ----
     tabItem(tabName = "map",
             
-            "map here"
+            fluidRow(
+              leafletOutput("map")
+            )
             
     ), # END map tabItem
     
