@@ -142,18 +142,20 @@ body <- dashboardBody(
             fluidRow(
               
               # input box ----
-              box(width = 4,
+              box(width = 12,
                   
-                  "radiobutton here"
+                  # cost dumbell pickerInputs ----
+                  restoration_action_pickerInput(inputId = "cost_effectiveness_input")
                   
               ), # END input box
               
               # leaflet box ----
-              box(width = 8, 
+              box(width = 12, 
                   
-                  "figure here"
+                  # cost effectiveness output ----
+                  plotOutput(outputId = "cost_effectiveness_output")
                   
-              ) # END leaflet box
+              ) # END cost effectiveness graph
               
             ) # END fluidRow
             

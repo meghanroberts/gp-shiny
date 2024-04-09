@@ -28,8 +28,5 @@ leaflet <-
     fillColor = "grey",
     fillOpacity = 0.7,
     popup = paste0("<strong>", "Subbasin Name: ", "</strong>", map_data$sbbsn_n, "<br>",
-                   "<strong>", "Action: ", "</strong>", "NA", "<br>",
-                   "<strong>", "Cost Effectiveness Ratio: ", "</strong>", "NA", "<br>",
-                   "<strong>", "Average Cost: ", "</strong>", "NA", "<br>",
-                   "<strong>", "# of Spawners: ", "</strong>", "NA")) %>% 
+                   "<em>", "no predicted increase in spawners", "</em>")) %>% 
   addScaleBar(position = "bottomleft")

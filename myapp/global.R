@@ -1,4 +1,5 @@
 # LOAD LIBRARIES ----
+library(tidyverse)
 library(shiny)
 library(shinydashboard)
 library(shinyWidgets)
