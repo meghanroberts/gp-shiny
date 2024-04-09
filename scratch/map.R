@@ -12,7 +12,10 @@ map_data <- master %>%
   group_by(noa_sbb) %>% 
   slice(which.min(cb_rati)) %>% 
   ungroup() %>% 
-  mutate(cb_rati = paste0(format(round(cb_rati), big.mark = ","))) %>% 
+  mutate(cb_rati = paste0(format(round(cb_rati), big.mark = ",")),
+         ttl_vg_ = paste0(format(round(ttl_vg_), big.mark = ",")),
+         ttl_lw_ = paste0(format(round(ttl_lw_), big.mark = ",")),
+         ttl_pp_ = paste0(format(round(ttl_pp_), big.mark = ","))) %>% 
   st_transform(4326)
 
 write_sf(map_data, here("myapp", "data", "processed", "map_data", "map_data.shp"))

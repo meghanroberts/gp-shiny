@@ -1,6 +1,7 @@
 # LOAD LIBRARIES ----
 library(shiny)
 library(shinydashboard)
+library(shinyWidgets)
 library(sf)
 library(leaflet)
 
@@ -15,3 +16,5 @@ NA_subs <- st_read("data/processed/map_data/NA_subs.shp")
 
 # sources
 source("functions/leaflet.R")
+source("functions/cost.R")
+source("functions/action_picker.R")

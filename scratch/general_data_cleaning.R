@@ -24,10 +24,10 @@ all_cost_ben <- all_cost_ben_og %>%
              rstrtn_ == "elj" ~ "Engineered Log Jams"),
            pop = pop,
            n_diff = paste0(format(round(n_diff), big.mark = ",")),
-           total_lower_cost = paste0(format(round(ttl_vg_), big.mark = ",")), 
-         total_upper_cost = paste0(format(round(ttl_pp_), big.mark = ",")), 
-         # percent_change = paste0(format(round(prc_chn), big.mark = ",")),  
-         total_avg_cost = paste0(format(round(ttl_vg_), big.mark = ",")),
+           ttl_lw_ = ttl_lw_,
+           ttl_pp_ = ttl_pp_,
+         # percent_change = paste0(format(round(prc_chn), big.mark = ",")),
+         ttl_vg_ = ttl_vg_,
          cb_ratio = cb_rati) 
  
 all_cost_ben <- left_join(subs, as.data.frame(all_cost_ben), by=c('noaa_subba'='noaa_subba')) %>% 

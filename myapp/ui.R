@@ -91,18 +91,21 @@ body <- dashboardBody(
             fluidRow(
               
               # input box ----
-              box(width = 4,
+              box(width = 12,
                   
-                  "radiobutton here"
+                  
+                  # cost dumbell pickerInputs ----
+                  restoration_action_pickerInput(inputId = "cost_dumbell_input")
                   
               ), # END input box
               
-              # leaflet box ----
-              box(width = 8, 
+              # cost dumbell ----
+              box(width = 12, 
                   
-                  "figure here"
+                  # cost dumbell output ----
+                  plotOutput(outputId = "cost_dumbell_output")
                   
-              ) # END leaflet box
+              ) # END cost dumbell box
               
             ) # END fluidRow
             
