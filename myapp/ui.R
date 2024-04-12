@@ -13,7 +13,7 @@ sidebar <- dashboardSidebar(
   menuItem(text = "Background", tabName = "background", icon = icon("star")),
   menuItem(text = "Summary Results", tabName = "map", icon = icon("map-pin")),
   menuItem(text = "Cost", tabName = "cost", icon = icon("money-bill-1")),
-  menuItem(text = "Benefits", tabName = "ben", icon = icon("fish")),
+  menuItem(text = "Benefits", tabName = "ben", icon = icon("fish"), selected = TRUE),
   menuItem(text = "Cost Effectiveness", tabName = "ce", icon = icon("dollar-sign")),
   menuItem(text = "Cobenefits", tabName = "ce", icon = icon("fish")),
   menuItem(text = "Demographic Info", tabName = "demo", icon = icon("person"))
@@ -30,30 +30,39 @@ body <- dashboardBody(
     tabItem(tabName = "background",
             
             # left-hand column ----
-            column(width = 6,
+            column(width = 5,
                    
                    #background info box
                    box(width=NULL, #takes on width of the column
                        title = tagList(icon("water"), 
-                                       strong("Monitoring Fish Creek Watershed")),
-                       includeMarkdown("text/intro.md"), 
-                       tags$img(src="final_ps_map.jpeg", ##saved in www
-                                alt="A map of Northern Alaska showing Fish Creek Watershed located within the National Petroleum Reserve.",
-                                style="max-width:100%;") #css to ensure the map is the correct size
+                                       strong("Chinook Salmon Habitat Restoration")),
+                       includeMarkdown("text/intro.md")
                    ) #END background box
                   
             ), # END left-hand column
             
             # right-hand column ----
-            column(width = 6,
+            column(width = 7,
+                   
+                   #map box
+                   box(width=NULL, #takes on width of the column
+                       tags$img(src="final_ps_map.jpeg", ##saved in www
+                                alt="A map of Northern Alaska showing Fish Creek Watershed located within the National Petroleum Reserve.",
+                                style="max-width:100%;") #css to ensure the map is the correct size
+                   ) #END map box
+                   
+            ), # END right-hand column
+            
+            # bottom column ----
+            column(width = 12,
                    
                    # first fluidRow ----
                    fluidRow(
                      
                      # data source box ----
                      box(width = NULL,
-                         
-                         "data citation here"
+                         title = tagList(strong("Purpose")),
+                         includeMarkdown("text/disclaimer.md")
                          
                      ) # END data source box
                      
@@ -64,14 +73,14 @@ body <- dashboardBody(
                      
                      # disclaimer box ----
                      box(width = NULL,
-                         
-                         "disclaimer here"
+                         title = tagList(strong("Data")),
+                         includeMarkdown("text/datacitation.md")
                          
                      ) # END disclaimer box
                      
                    ) # END second fluidRow
                    
-            ) # END right-hand column
+            ), # END bottom column
             
     ), # END background tabItem
     

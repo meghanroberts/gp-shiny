@@ -13,7 +13,7 @@ server <- function(input, output) {
   
   
   
-  # START cost dumbell filter df ----
+  # START cost dumbbell filter df ----
   
   master_cost_filtered <- reactive({ 
     
@@ -21,11 +21,11 @@ server <- function(input, output) {
       filter(pop == "fall_chinook",
              rst_typ == c(input$cost_dumbell_input))
     
-  }) # END cost dumbell filter df
+  }) # END cost dumbbell filter df
   
   
   
-  # START cost dumbell graph  ----  
+  # START cost dumbbell graph  ----  
   
   output$cost_dumbell_output <- renderPlot({
     
@@ -33,7 +33,7 @@ server <- function(input, output) {
     cost_dumbell_chart(data = master_cost_filtered(), 
                        input = input$cost_dumbell_input)
     
-  }) # END cost dumbell graph
+  }) # END cost dumbbell graph
   
   
   
