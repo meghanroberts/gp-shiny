@@ -8,3 +8,27 @@ pickerInput(inputId = inputId, label = "Pick Restoration Action:",
             options = pickerOptions(actionsBox = TRUE),
             multiple = FALSE)
 }
+
+
+
+# function for creating a restoration action picker that allows for multiple to be selected. can be used for any figure that requires picking an action
+rest_multiaction_pickerInput <- function(inputId) {
+
+  pickerInput(inputId = inputId, label = "Pick Restoration Action:",
+              choices = c("Floodplain", "Riparian Planting", "Engineered Log Jams"),
+              selected = "Floodplain",
+              options = pickerOptions(actionsBox = TRUE),
+              multiple = TRUE)
+}
+
+# function for creating a restoration action picker that allows for multiple to be selected. can be used for any figure that requires picking an action
+species_pickerInput <- function(inputId) {
+  
+  pickerInput(inputId = inputId, label = "Pick Species:",
+              choices = c("Chinook", "Coho", "Steelhead"),
+              selected = "Chinook",
+              options = pickerOptions(actionsBox = TRUE),
+              multiple = FALSE)
+}
+
+

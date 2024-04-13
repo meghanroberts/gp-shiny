@@ -1,6 +1,6 @@
 server <- function(input, output) {
   
-  
+  ## MAP TAB
   # START leaflet map ---- 
   
   output$map <- renderLeaflet({
@@ -10,9 +10,9 @@ server <- function(input, output) {
     
   }) # END leaflet map
   
+  ##MAP TAB END
   
-  
-  
+  ##COST TAB
   # START cost dumbbell filter df ----
   
   master_cost_filtered <- reactive({ 
@@ -35,7 +35,16 @@ server <- function(input, output) {
     
   }) # END cost dumbbell graph
   
+  ##COST TAB END
   
+  ##BEN TAB 
+  
+  
+  
+  ##BEN TAB END
+  
+  
+  ##CE TAB
   
   # START cost effectiveness filter df ----
   
@@ -61,11 +70,16 @@ server <- function(input, output) {
     
   }) # END cost effectiveness graph
   
+  ##CE TAB END
   
+  ##DEMO TAB
+  output$demo_map <- renderLeaflet({
+    
+    # from functions/leaflet.R
+    demo_map
+    
+  }) # END leaflet map
   
-  
-  
-  
-  
+  ##DEMO TAB END
   
 }

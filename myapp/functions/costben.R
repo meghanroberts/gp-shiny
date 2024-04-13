@@ -32,6 +32,12 @@ cost_dumbell_chart <- function(data, input) {
 
 
 
+# Benefits
+
+# ben_bar<-function(data, input){}
+
+
+
 # Cost effectiveness 
 
 cost_effectiveness_bar <- function(data, input) {

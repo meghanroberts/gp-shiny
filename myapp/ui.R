@@ -15,7 +15,6 @@ sidebar <- dashboardSidebar(
   menuItem(text = "Cost", tabName = "cost", icon = icon("money-bill-1")),
   menuItem(text = "Benefits", tabName = "ben", icon = icon("fish"), selected = TRUE),
   menuItem(text = "Cost Effectiveness", tabName = "ce", icon = icon("dollar-sign")),
-  menuItem(text = "Cobenefits", tabName = "ce", icon = icon("fish")),
   menuItem(text = "Demographic Info", tabName = "demo", icon = icon("person"))
   
 )#END dashboardsidebar
@@ -127,14 +126,17 @@ body <- dashboardBody(
             fluidRow(
               
               # input box ----
-              box(width = 4,
+              box(width = 12,
                   
-                  "checkbox here"
+                  # figure pickerInputs ----
+                  rest_multiaction_pickerInput(inputId = "cost_dumbell_input"),
+                  # # figure pickerInputs ----
+                  # species_pickerInput(inputId = "cost_dumbell_input")
                   
               ), # END input box
               
               # leaflet box ----
-              box(width = 8, 
+              box(width = 12, 
                   
                   "map here"
                   
@@ -170,17 +172,12 @@ body <- dashboardBody(
             
     ), # END ce tabItem
     
-    # cobenefits tabItem ----
-    tabItem(tabName = "cobens",
-            
-            "cobenefits info here"
-            
-    ), # END coben tabItem
-    
     # demo tabItem ----
     tabItem(tabName = "demo",
             
-            "deom info here"
+            fluidRow(
+              leafletOutput("demo_map")
+            )
             
     ) # END demo tabItem
     
