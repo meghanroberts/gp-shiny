@@ -1,22 +1,18 @@
-# create a key for which subbasins to keep (which have benefits to chinook)
-filtered_data <- master %>% filter(pop == "fall_chinook" & n_diff > 0) %>% select(noaa_subba) %>% st_drop_geometry() %>% unique()
-
-# #spawner increase
-# 
-# increase<-all_cost_benefit %>% 
-#   right_join(filtered_data) %>% 
-#   filter(pop == "coho") %>% 
-#   filter(n_diff>0) %>%  #remove when there is no benefit
-#   mutate(n_diff=sum(n_diff))
-
 library(tidyverse)
 
 master <- st_read("data/processed/master.shp") 
+
+custom_colors <- c("rp" = "#03045E",
+                   # "#1F271B",
+                   "elj" = "#19647E", 
+                   "floodplain" = "#28AFB0")
 
 #creating a bar chart with spawners by action and subbasin
 
 spawner_barchart <- master %>% 
   filter(pop == "steelhead") %>% 
+  mutate(sbbsn_n = as.factor(sbbsn_n)) %>%
+  mutate(n_diff = as.numeric(n_diff)) %>%
   mutate(subbasin_name = fct_reorder(sbbsn_n, n_diff, .fun = sum),
          restoration_type = factor(rst_typ,
                                    levels = c( "rp", "elj", "floodplain"))) %>% 
@@ -36,7 +32,10 @@ spawner_barchart <- master %>%
        subtitle = "by subbasin and restoration action",
        caption = "Data Source: Beechie, T. J., Goodman, A., Stefankiv, O., Timpane-Padgham, B., & Lowe, M. (2023). \n Habitat Assessment and Restoration Planning (HARP) Model for the Snohomish and Stillaguamish \n River Basins (noaa:48860).") +
   coord_flip() +
-  scale_fill_manual(values = custom_colors,
+  scale_fill_manual(values = c("#03045E",
+                               # "#1F271B",
+                               "#19647E", 
+                               "#28AFB0"),
                     labels = c("Riparian Planting",
                                "Engineered Log Jam",
                                "Floodplain"),

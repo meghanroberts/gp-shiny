@@ -39,7 +39,16 @@ server <- function(input, output) {
   
   ##BEN TAB 
   
+  # START ben graph  ----  
   
+  output$ben_fig_output <- renderPlot({
+    
+    # from cost function 
+    spawner_barchart
+    # (data = master_cost_effectiveness_filtered(), 
+    #                        input = input$cost_effectiveness_input)
+    
+  }) # END ben graph
   
   ##BEN TAB END
   

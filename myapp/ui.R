@@ -138,7 +138,8 @@ body <- dashboardBody(
               # leaflet box ----
               box(width = 12, 
                   
-                  "map here"
+                  # ben plot output ----
+                  plotOutput(outputId = "ben_fig_output")
                   
               ) # END leaflet box
               
