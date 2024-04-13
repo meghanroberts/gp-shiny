@@ -14,7 +14,7 @@ map_data <- st_read("data/processed/map_data/map_data.shp")
 # map data without benefits or actions
 NA_subs <- st_read("data/processed/map_data/NA_subs.shp")
 # demo data
-NA_subs <- st_read("data/processed/demo_transformed.shp")
+demo <- st_read("data/processed/demo_transformed.shp")
 
 
 # sources

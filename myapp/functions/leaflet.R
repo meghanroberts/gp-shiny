@@ -10,7 +10,7 @@ leaflet <-
   # add markers
   addPolygons(
     data = map_data,
-    weight = 1,
+    weight = 2,
     color = "black",
     opacity = 1, 
     fillColor = "cyan",
@@ -45,8 +45,8 @@ demo_map<-leaflet(demo) |>
   
   # add polygons
   addPolygons(data = demo,
-              color = "#838393",    # outline color
-              fillColor = "#373870",  # fill color
+              color = "black",    # outline color
+              fillColor = "cyan",  # fill color
               fillOpacity = 0.7,  # fill opacity
               weight = 2,      # outline weight
               popup = ~paste("Total Score: ", demo$Sbb_Tt_S,
