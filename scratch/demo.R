@@ -21,6 +21,16 @@ leaflet() |>
   # add mini map
   addMiniMap(toggleDisplay = TRUE, minimized = FALSE) |> 
   
+  addPolygons(
+    data = map_data,
+    weight = 2,
+    color = "black",
+    opacity = 1, 
+    fillColor = "grey",
+    fillOpacity = 0.7,
+    popup = paste0("<strong>", "Subbasin Name: ", "</strong>", map_data$sbbsn_n, "<br>",
+                   "<em>", "no predicted increase in spawners", "</em>")) %>% 
+  
   # add polygons
   addPolygons(data = demo,
               color = "#838393",    # outline color
@@ -32,3 +42,4 @@ leaflet() |>
                              "Poverty Score: ", demo$Sbb_Pv_,
                              "Unemployment Score: ", demo$Sbb_Un_,
                              "Tribal Presence: ", demo$Sbb_Tr_S))
+

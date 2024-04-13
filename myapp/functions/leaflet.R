@@ -49,9 +49,20 @@ demo_map<-leaflet(demo) |>
               fillColor = "cyan",  # fill color
               fillOpacity = 0.7,  # fill opacity
               weight = 2,      # outline weight
-              popup = ~paste("Total Score: ", demo$Sbb_Tt_S,
-                             "POC Score: ", demo$Sb_POC_,
-                             "Poverty Score: ", demo$Sbb_Pv_,
-                             "Unemployment Score: ", demo$Sbb_Un_,
-                             "Tribal Presence: ", demo$Sbb_Tr_S))
+              popup = ~paste("<strong>", "Subbasin Name: ", "</strong>", map_data$sbbsn_n,"<br>",
+                             "<strong>", "Total Score: ", "</strong>", demo$Sbb_Tt_S,"<br>",
+                             "<strong>", "POC Score: ", "</strong>", demo$Sb_POC_,"<br>",
+                             "<strong>", "Poverty Score: ", "</strong>", demo$Sbb_Pv_,"<br>",
+                             "<strong>", "Unemployment Score: ", "</strong>", demo$Sbb_Un_,"<br>",
+                             "<strong>", "Tribal Presence: ", "</strong>", demo$Sbb_Tr_S)) |> 
+  addPolygons(
+                               data = NA_subs,
+                               weight = 1,
+                               color = "black",
+                               opacity = 1, 
+                               fillColor = "grey",
+                               fillOpacity = 0.7,
+                               popup = paste0("<strong>", "Subbasin Name: ", "</strong>", map_data$sbbsn_n, "<br>",
+                                              "<em>", "no predicted increase in spawners", "</em>")) %>% 
+  addScaleBar(position = "bottomleft")
 
