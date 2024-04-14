@@ -37,6 +37,8 @@ server <- function(input, output) {
   
   ##COST TAB END
   
+  
+  
   ##BEN TAB 
   
   # START ben filter df ----
@@ -54,12 +56,14 @@ server <- function(input, output) {
   # START ben graph  ----  
   
   output$ben_fig_output <- renderPlot({
-    spawner_barchart
-    # (data = master_ben_filtered(), input = c(input$ben_rest_input, input$species_input))
+    ben_plot(data = master_ben_filtered(), species_input = input$species_input, 
+                     rest_input=input$ben_rest_input)
     
   }) # END ben graph
   
   ##BEN TAB END
+  
+  
   
   
   ##CE TAB

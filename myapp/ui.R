@@ -29,7 +29,7 @@ body <- dashboardBody(
     tabItem(tabName = "background",
             
             # left-hand column ----
-            column(width = 5,
+            column(width = 4,
                    
                    #background info box
                    box(width=NULL, #takes on width of the column
@@ -41,7 +41,7 @@ body <- dashboardBody(
             ), # END left-hand column
             
             # right-hand column ----
-            column(width = 7,
+            column(width = 8,
                    
                    #map box
                    box(width=NULL, #takes on width of the column
@@ -60,24 +60,12 @@ body <- dashboardBody(
                      
                      # data source box ----
                      box(width = NULL,
-                         title = tagList(strong("Purpose")),
-                         includeMarkdown("text/disclaimer.md")
-                         
-                     ) # END data source box
-                     
-                   ), # END first fluidRow
-                   
-                   # second fluidRow ----
-                   fluidRow(
-                     
-                     # disclaimer box ----
-                     box(width = NULL,
                          title = tagList(strong("Data")),
                          includeMarkdown("text/datacitation.md")
                          
-                     ) # END disclaimer box
+                     ) # END data source box
                      
-                   ) # END second fluidRow
+                   )
                    
             ), # END bottom column
             
