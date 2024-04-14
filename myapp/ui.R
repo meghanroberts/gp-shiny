@@ -129,9 +129,9 @@ body <- dashboardBody(
               box(width = 12,
                   
                   # figure pickerInputs ----
-                  rest_multiaction_pickerInput(inputId = "cost_dumbell_input"),
-                  # # figure pickerInputs ----
-                  # species_pickerInput(inputId = "cost_dumbell_input")
+                  rest_multiaction_pickerInput(inputId = "ben_rest_input"),
+                  # figure pickerInputs ----
+                  species_pickerInput(inputId = "species_input")
                   
               ), # END input box
               

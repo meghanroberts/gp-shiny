@@ -39,14 +39,23 @@ server <- function(input, output) {
   
   ##BEN TAB 
   
+  # START ben filter df ----
+  
+  master_ben_filtered<- reactive({ 
+    
+    master %>% 
+      filter(!is.na(cb_rati),
+             pop == c(input$species_input),
+             rst_typ == c(input$ben_rest_input)) %>%
+      as.data.frame()  
+    
+  }) # END ben filter df
+  
   # START ben graph  ----  
   
   output$ben_fig_output <- renderPlot({
-    
-    # from cost function 
     spawner_barchart
-    # (data = master_cost_effectiveness_filtered(), 
-    #                        input = input$cost_effectiveness_input)
+    # (data = master_ben_filtered(), input = c(input$ben_rest_input, input$species_input))
     
   }) # END ben graph
   
