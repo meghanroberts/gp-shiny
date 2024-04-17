@@ -32,6 +32,12 @@ leaflet <-
   addScaleBar(position = "bottomleft")
 
 
+##START OF DEMO MAP
+
+palette = c("blue", "green")
+
+color_palette <- colorNumeric(palette = palette, domain = demo$Sbb_Tt_S)
+
 demo_map<-leaflet(demo) |> 
   
   # add tiles
@@ -46,7 +52,8 @@ demo_map<-leaflet(demo) |>
   # add polygons
   addPolygons(data = demo,
               color = "black",    # outline color
-              fillColor = "cyan",  # fill color
+              # fillColor = "cyan",  # fill color
+              fillColor = ~color_palette(Sbb_Tt_S),  # fill color based on the Sbb_Tt_S variable
               fillOpacity = 0.7,  # fill opacity
               weight = 2,      # outline weight
               popup = ~paste("<strong>", "Subbasin Name: ", "</strong>", map_data$sbbsn_n,"<br>",
@@ -54,7 +61,7 @@ demo_map<-leaflet(demo) |>
                              "<strong>", "POC Score: ", "</strong>", demo$Sb_POC_,"<br>",
                              "<strong>", "Poverty Score: ", "</strong>", demo$Sbb_Pv_,"<br>",
                              "<strong>", "Unemployment Score: ", "</strong>", demo$Sbb_Un_,"<br>",
-                             "<strong>", "Tribal Presence: ", "</strong>", demo$Sbb_Tr_S)) |> 
+                             "<strong>", "Presence of Tribal Lands: ", "</strong>", demo$Sbb_Tr_S)) |> 
   addPolygons(
                                data = NA_subs,
                                weight = 1,
@@ -63,6 +70,6 @@ demo_map<-leaflet(demo) |>
                                fillColor = "grey",
                                fillOpacity = 0.7,
                                popup = paste0("<strong>", "Subbasin Name: ", "</strong>", map_data$sbbsn_n, "<br>",
-                                              "<em>", "no predicted increase in spawners", "</em>")) %>% 
+                                              "<em>", "unlikely candidate for Chinook habitat restoration", "</em>")) %>% 
   addScaleBar(position = "bottomleft")
 

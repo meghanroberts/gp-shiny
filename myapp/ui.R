@@ -134,10 +134,9 @@ body <- dashboardBody(
               
               # input box ----
               box(width = 12,
-                  
-                  # # figure pickerInputs ----
-                  # rest_multiaction_pickerInput(inputId = "ben_rest_input"),
-                  # figure pickerInputs ----
+                  title = tagList(icon("fish"), 
+                                  strong("Benefits of Restoration")),
+                  includeMarkdown("text/ben.md"),
                   species_pickerInput(inputId = "spp_input")
                   
               ), # END input box
@@ -187,8 +186,17 @@ body <- dashboardBody(
     tabItem(tabName = "demo",
             
             fluidRow(
-              leafletOutput("demo_map")
-            )
+              
+              # input box ----
+              box(width = 12,
+                  title = tagList(icon("fish"), 
+                                  strong("Demographics of Stillaguamish Subbasins")),
+                  includeMarkdown("text/demo.md")
+                  
+              ), # END input box
+              box(width=12, 
+              leafletOutput("demo_map"))
+            ),
             
     ) # END demo tabItem
     
