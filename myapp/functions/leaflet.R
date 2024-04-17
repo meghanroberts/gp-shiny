@@ -1,3 +1,11 @@
+### SUMMARY 
+
+
+ord <- factor(unique(map_data$rst_typ), levels = c('Floodplain', 'Engineered Log Jams', 'Riparian Planting'))
+palette_summ = c("#03045E", "#19647E", "#28AFB0")
+summ_palette <- colorFactor(palette = palette_summ, levels = ord, ordered = FALSE)
+
+
 
 # creating a leaflet function 
 leaflet <- 
@@ -12,24 +20,24 @@ leaflet <-
     data = map_data,
     weight = 2,
     color = "black",
-    opacity = 1, 
-    fillColor = "cyan",
-    fillOpacity = 0.7,
+    fillOpacity = 1, 
+    fillColor = ~summ_palette(rst_typ),
     popup = paste0("<strong>", "Subbasin Name: ", "</strong>", map_data$sbbsn_n, "<br>",
                    "<strong>", "Action: ", "</strong>", map_data$rst_typ, "<br>",
                    "<strong>", "Cost Effectiveness Ratio: ", "</strong>", "$", map_data$cb_rati, "/Chinook", "<br>",
                    "<strong>", "Average Cost: ", "</strong>", "$ ", map_data$ttl_vg_, "<br>",
                    "<strong>", "# of Spawners: ", "</strong>", map_data$n_diff)) %>% 
+  addLegend(position = "bottomright", pal = summ_palette, values = ~rst_typ, title = "Restoration Type") %>% 
+  
   addPolygons(
     data = NA_subs,
     weight = 1,
     color = "black",
-    opacity = 1, 
     fillColor = "grey",
     fillOpacity = 0.7,
     popup = paste0("<strong>", "Subbasin Name: ", "</strong>", map_data$sbbsn_n, "<br>",
                    "<em>", "no predicted increase in spawners", "</em>")) %>% 
-  addScaleBar(position = "bottomleft")
+  addScaleBar(position = "bottomleft") 
 
 
 ##START OF DEMO MAP

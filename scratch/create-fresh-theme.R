@@ -11,22 +11,14 @@ create_theme(
   
   # dashboardBody styling (includes boxes)
   adminlte_global(
-    content_bg = "#FFFFFF", 
-    custom_css = '
-      /* Remove box shadows from all boxes */
-      .box {
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
-      }
-    '
+    content_bg = "#FFFFFF"
   ),
   
   # dashboardSidebar styling
   adminlte_sidebar(
     width = "300px", 
     dark_bg = "#3B413C", # light blue
-    dark_hover_bg = "#DAF0EE", # magenta
+    dark_hover_bg = "cyan4", # magenta
     dark_color = "#FFFFFF" # red
   ),
   

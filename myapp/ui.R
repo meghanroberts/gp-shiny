@@ -8,6 +8,7 @@ header <- dashboardHeader(
 
 #........................dashboardSidebar........................
 sidebar <- dashboardSidebar(
+  sidebarMenu(id = "tabs",
   
   #different pages
   menuItem(text = "Background", tabName = "background", icon = icon("star")),
@@ -17,7 +18,7 @@ sidebar <- dashboardSidebar(
   menuItem(text = "Cost Effectiveness", tabName = "ce", icon = icon("dollar-sign")),
   menuItem(text = "Demographic Info", tabName = "demo", icon = icon("person"))
   
-)#END dashboardsidebar
+))#END dashboardsidebar
 
 #..........................dashboardBody.........................
 body <- dashboardBody(
@@ -25,8 +26,9 @@ body <- dashboardBody(
   # set theme
   fresh::use_theme("shinydashboard-fresh-theme.css"),
   
+  
   tags$head(
-    tags$style(HTML('
+    tags$style(HTML("
       /* Remove borders and shadows from all boxes */
       .box {
         border: none !important;
@@ -34,8 +36,14 @@ body <- dashboardBody(
         -moz-box-shadow: none !important;
         box-shadow: none !important;
       }
-    '))),
 
+      /* Custom CSS to adjust the width of the picker input box */
+      .custom-picker .selectize-input {
+        width: 50px; /* Adjust the width as needed */
+      }
+    "
+    ))),
+  
   
   # tabItems ----
   tabItems(
@@ -47,16 +55,16 @@ body <- dashboardBody(
             column(width = 12,
                    
                    #background info box
-                   box(width=NULL, #takes on width of the column
-                       title = tagList(icon("water"), 
+                   box(width=12, #takes on width of the column
+                       title = tagList(
                                        strong("Chinook Salmon Habitat Restoration")),
                        includeMarkdown("text/intro.md")
                    ) #END background box
-                  
+                   
             ), # END left-hand column
             
             # right-hand column ----
-            column(width = 12, align = "center",
+            column(width = 12,
                    
                    #map box
                    box(width=NULL, #takes on width of the column
@@ -105,7 +113,10 @@ body <- dashboardBody(
     # map tabItem ----
     tabItem(tabName = "map",
             
-            fluidRow(
+            fluidRow(box(width = 12,
+                         title = tagList( 
+                                         strong("Summary")),
+                         includeMarkdown("text/summary.md")),
               leafletOutput("map")%>% 
                 shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
             )
@@ -117,10 +128,10 @@ body <- dashboardBody(
             
             # cost info box ----
             fluidRow(
-                   box(width=12, #takes on width of the column
-                       title = tagList(icon("money-bill-1"), 
-                                       strong("Restoration Costs")),
-                       includeMarkdown("text/cost.md"),
+              box(width=12, #takes on width of the column
+                  title = tagList( 
+                                  strong("Restoration Costs")),
+                  includeMarkdown("text/cost.md"),
                   restoration_action_pickerInput(inputId = "cost_dumbell_input")
                   
               ), # END input box
@@ -146,7 +157,7 @@ body <- dashboardBody(
               
               # input box ----
               box(width = 12,
-                  title = tagList(icon("fish"), 
+                  title = tagList(
                                   strong("Benefits of Restoration")),
                   includeMarkdown("text/ben.md"),
                   species_pickerInput(inputId = "spp_input")
@@ -155,7 +166,7 @@ body <- dashboardBody(
               
               # leaflet box ----
               box(width = 12, 
-               
+                  
                   # ben plot output ----
                   plotOutput(outputId = "ben_fig_output")%>% 
                     shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
@@ -172,12 +183,12 @@ body <- dashboardBody(
             # cost info box ----
             fluidRow(
               box(width=12, #takes on width of the column
-                  title = tagList(icon("dollar-sign"), 
+                  title = tagList(
                                   strong("Cost Effectiveness")),
                   includeMarkdown("text/ce.md"),
                   restoration_action_pickerInput(inputId = "cost_effectiveness_input"),
                   
-             
+                  
                   
               ), # END input box
               
@@ -201,13 +212,13 @@ body <- dashboardBody(
               
               # input box ----
               box(width = 12,
-                  title = tagList(icon("fish"), 
+                  title = tagList( 
                                   strong("Demographics of Stillaguamish Subbasins")),
                   includeMarkdown("text/demo.md")
                   
               ), # END input box
               box(width=12, 
-              leafletOutput("demo_map"))
+                  leafletOutput("demo_map"))
             ),
             
     ) # END demo tabItem
