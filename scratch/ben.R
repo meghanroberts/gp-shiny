@@ -9,6 +9,25 @@ custom_colors <- c("rp" = "#03045E",
 
 #creating a bar chart with spawners by action and subbasin
 
+filtered_data <- master %>%
+  filter(pop == input$spp_input
+         # ,rst_typ == c(input$ben_rest_input)
+  ) %>%
+  mutate(rst_typ=factor(rst_typ, levels = c("Floodplain", "Engineered Log Jams",
+                                            "Riparian Planting"))) %>%
+  mutate(sbbsn_n=factor(sbbsn_n)) %>% 
+  mutate(n_diff=as.numeric(n_diff)) %>%
+  mutate(subbasin_name = fct_reorder(sbbsn_n, n_diff, .fun = sum)) %>% 
+  filter(n_diff>0) %>% 
+  as.data.frame()
+
+
+
+
+
+
+
+
 spawner_barchart <- master %>% 
   filter(pop == "steelhead") %>% 
   mutate(sbbsn_n = as.factor(sbbsn_n)) %>%

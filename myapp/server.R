@@ -72,7 +72,9 @@ server <- function(input, output) {
                ) %>%
         mutate(rst_typ=factor(rst_typ, levels = c("Floodplain", "Engineered Log Jams",
                                                      "Riparian Planting"))) %>%
+        mutate(sbbsn_n=factor(sbbsn_n)) %>% 
         mutate(n_diff=as.numeric(n_diff)) %>% 
+        mutate(sbbsn_n = fct_reorder(sbbsn_n, n_diff, .fun = sum)) %>% 
         filter(n_diff>0) %>% 
         as.data.frame()
     })
