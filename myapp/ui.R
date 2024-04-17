@@ -44,7 +44,7 @@ body <- dashboardBody(
             ), # END left-hand column
             
             # right-hand column ----
-            column(width = 10,
+            column(width = 12, align = "center",
                    
                    #map box
                    box(width=NULL, #takes on width of the column
