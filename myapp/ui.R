@@ -32,7 +32,7 @@ body <- dashboardBody(
     tabItem(tabName = "background",
             
             # left-hand column ----
-            column(width = 4,
+            column(width = 12,
                    
                    #background info box
                    box(width=NULL, #takes on width of the column
@@ -44,12 +44,12 @@ body <- dashboardBody(
             ), # END left-hand column
             
             # right-hand column ----
-            column(width = 8,
+            column(width = 10,
                    
                    #map box
                    box(width=NULL, #takes on width of the column
                        tags$img(src="final_ps_map.jpeg", ##saved in www
-                                alt="A map of Northern Alaska showing Fish Creek Watershed located within the National Petroleum Reserve.",
+                                alt="A map of Puget Sound highlighting the Stillaguamish River Basin",
                                 style="max-width:100%;") #css to ensure the map is the correct size
                    ) #END map box
                    
