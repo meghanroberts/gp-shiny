@@ -43,7 +43,7 @@ ggplot(data = data, aes(x = fct_reorder(sbbsn_n, cb_rati),
   theme_minimal() +
   labs( 
     x = "", 
-    y = "Cost Effectivness ($/Chinook Spawner)",
+    y = "$/Chinook Spawner",
     title = paste("Cost Effectiveness of", input, "Habitat Restoration")) +
   # caption = "Data Source: Beechie, T. J., Goodman, A., Stefankiv, O., Timpane-Padgham, B., & Lowe, M. (2023). \n Habitat Assessment and Restoration Planning (HARP) Model for the Snohomish and Stillaguamish \n River Basins (noaa:48860).") +
   

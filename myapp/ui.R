@@ -23,6 +23,9 @@ sidebar <- dashboardSidebar(
 #..........................dashboardBody.........................
 body <- dashboardBody(
   
+  # set theme
+  fresh::use_theme("shinydashboard-fresh-theme.css"),
+  
   # tabItems ----
   tabItems(
     
@@ -87,14 +90,12 @@ body <- dashboardBody(
     # cost tabItem ----
     tabItem(tabName = "cost",
             
-            # fluidRow ----
+            # cost info box ----
             fluidRow(
-              
-              # input box ----
-              box(width = 12,
-                  
-                  
-                  # cost dumbell pickerInputs ----
+                   box(width=12, #takes on width of the column
+                       title = tagList(icon("money-bill-1"), 
+                                       strong("Restoration Costs")),
+                       includeMarkdown("text/cost.md"),
                   restoration_action_pickerInput(inputId = "cost_dumbell_input")
                   
               ), # END input box
@@ -138,14 +139,15 @@ body <- dashboardBody(
     # ce tabItem ----
     tabItem(tabName = "ce",
             
-            # fluidRow ----
+            # cost info box ----
             fluidRow(
-              
-              # input box ----
-              box(width = 12,
+              box(width=12, #takes on width of the column
+                  title = tagList(icon("dollar-sign"), 
+                                  strong("Cost Effectiveness")),
+                  includeMarkdown("text/ce.md"),
+                  restoration_action_pickerInput(inputId = "cost_effectiveness_input"),
                   
-                  # cost dumbell pickerInputs ----
-                  restoration_action_pickerInput(inputId = "cost_effectiveness_input")
+             
                   
               ), # END input box
               

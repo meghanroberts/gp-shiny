@@ -7,4 +7,6 @@ pickerInput(inputId = inputId, label = "Pick Restoration Action:",
             selected = "Floodplain",
             options = pickerOptions(actionsBox = TRUE),
             multiple = FALSE)
+     
 }
+
