@@ -13,9 +13,8 @@ sidebar <- dashboardSidebar(
   menuItem(text = "Background", tabName = "background", icon = icon("star")),
   menuItem(text = "Summary Results", tabName = "map", icon = icon("map-pin")),
   menuItem(text = "Cost", tabName = "cost", icon = icon("money-bill-1")),
-  menuItem(text = "Benefits", tabName = "ben", icon = icon("fish")),
+  menuItem(text = "Benefits", tabName = "ben", icon = icon("fish"), selected = TRUE),
   menuItem(text = "Cost Effectiveness", tabName = "ce", icon = icon("dollar-sign")),
-  menuItem(text = "Cobenefits", tabName = "ce", icon = icon("fish")),
   menuItem(text = "Demographic Info", tabName = "demo", icon = icon("person"))
   
 )#END dashboardsidebar
@@ -33,48 +32,45 @@ body <- dashboardBody(
     tabItem(tabName = "background",
             
             # left-hand column ----
-            column(width = 6,
+            column(width = 4,
                    
                    #background info box
                    box(width=NULL, #takes on width of the column
                        title = tagList(icon("water"), 
-                                       strong("Monitoring Fish Creek Watershed")),
-                       includeMarkdown("text/intro.md"), 
-                       tags$img(src="final_ps_map.jpeg", ##saved in www
-                                alt="A map of Northern Alaska showing Fish Creek Watershed located within the National Petroleum Reserve.",
-                                style="max-width:100%;") #css to ensure the map is the correct size
+                                       strong("Chinook Salmon Habitat Restoration")),
+                       includeMarkdown("text/intro.md")
                    ) #END background box
                   
             ), # END left-hand column
             
             # right-hand column ----
-            column(width = 6,
+            column(width = 8,
+                   
+                   #map box
+                   box(width=NULL, #takes on width of the column
+                       tags$img(src="final_ps_map.jpeg", ##saved in www
+                                alt="A map of Northern Alaska showing Fish Creek Watershed located within the National Petroleum Reserve.",
+                                style="max-width:100%;") #css to ensure the map is the correct size
+                   ) #END map box
+                   
+            ), # END right-hand column
+            
+            # bottom column ----
+            column(width = 12,
                    
                    # first fluidRow ----
                    fluidRow(
                      
                      # data source box ----
                      box(width = NULL,
-                         
-                         "data citation here"
+                         title = tagList(strong("Data")),
+                         includeMarkdown("text/datacitation.md")
                          
                      ) # END data source box
                      
-                   ), # END first fluidRow
+                   )
                    
-                   # second fluidRow ----
-                   fluidRow(
-                     
-                     # disclaimer box ----
-                     box(width = NULL,
-                         
-                         "disclaimer here"
-                         
-                     ) # END disclaimer box
-                     
-                   ) # END second fluidRow
-                   
-            ) # END right-hand column
+            ), # END bottom column
             
     ), # END background tabItem
     
@@ -82,7 +78,8 @@ body <- dashboardBody(
     tabItem(tabName = "map",
             
             fluidRow(
-              leafletOutput("map")
+              leafletOutput("map")%>% 
+                shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
             )
             
     ), # END map tabItem
@@ -104,7 +101,8 @@ body <- dashboardBody(
               box(width = 12, 
                   
                   # cost dumbell output ----
-                  plotOutput(outputId = "cost_dumbell_output")
+                  plotOutput(outputId = "cost_dumbell_output")%>% 
+                    shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
                   
               ) # END cost dumbell box
               
@@ -119,16 +117,21 @@ body <- dashboardBody(
             fluidRow(
               
               # input box ----
-              box(width = 4,
+              box(width = 12,
                   
-                  "checkbox here"
+                  # # figure pickerInputs ----
+                  # rest_multiaction_pickerInput(inputId = "ben_rest_input"),
+                  # figure pickerInputs ----
+                  species_pickerInput(inputId = "spp_input")
                   
               ), # END input box
               
               # leaflet box ----
-              box(width = 8, 
-                  
-                  "map here"
+              box(width = 12, 
+               
+                  # ben plot output ----
+                  plotOutput(outputId = "ben_fig_output")%>% 
+                    shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
                   
               ) # END leaflet box
               
@@ -155,7 +158,8 @@ body <- dashboardBody(
               box(width = 12, 
                   
                   # cost effectiveness output ----
-                  plotOutput(outputId = "cost_effectiveness_output")
+                  plotOutput(outputId = "cost_effectiveness_output")%>% 
+                    shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
                   
               ) # END cost effectiveness graph
               
@@ -163,17 +167,12 @@ body <- dashboardBody(
             
     ), # END ce tabItem
     
-    # cobenefits tabItem ----
-    tabItem(tabName = "cobens",
-            
-            "cobenefits info here"
-            
-    ), # END coben tabItem
-    
     # demo tabItem ----
     tabItem(tabName = "demo",
             
-            "deom info here"
+            fluidRow(
+              leafletOutput("demo_map")
+            )
             
     ) # END demo tabItem
     

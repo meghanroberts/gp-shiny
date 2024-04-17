@@ -10,7 +10,7 @@ leaflet <-
   # add markers
   addPolygons(
     data = map_data,
-    weight = 1,
+    weight = 2,
     color = "black",
     opacity = 1, 
     fillColor = "cyan",
@@ -30,3 +30,39 @@ leaflet <-
     popup = paste0("<strong>", "Subbasin Name: ", "</strong>", map_data$sbbsn_n, "<br>",
                    "<em>", "no predicted increase in spawners", "</em>")) %>% 
   addScaleBar(position = "bottomleft")
+
+
+demo_map<-leaflet(demo) |> 
+  
+  # add tiles
+  addProviderTiles(providers$Esri.WorldImagery) |> 
+  
+  # set view over Stilly
+  setView(lng = -121.9, lat = 48.15, zoom = 9) |> 
+  
+  # add mini map
+  addMiniMap(toggleDisplay = TRUE, minimized = FALSE) |> 
+  
+  # add polygons
+  addPolygons(data = demo,
+              color = "black",    # outline color
+              fillColor = "cyan",  # fill color
+              fillOpacity = 0.7,  # fill opacity
+              weight = 2,      # outline weight
+              popup = ~paste("<strong>", "Subbasin Name: ", "</strong>", map_data$sbbsn_n,"<br>",
+                             "<strong>", "Total Score: ", "</strong>", demo$Sbb_Tt_S,"<br>",
+                             "<strong>", "POC Score: ", "</strong>", demo$Sb_POC_,"<br>",
+                             "<strong>", "Poverty Score: ", "</strong>", demo$Sbb_Pv_,"<br>",
+                             "<strong>", "Unemployment Score: ", "</strong>", demo$Sbb_Un_,"<br>",
+                             "<strong>", "Tribal Presence: ", "</strong>", demo$Sbb_Tr_S)) |> 
+  addPolygons(
+                               data = NA_subs,
+                               weight = 1,
+                               color = "black",
+                               opacity = 1, 
+                               fillColor = "grey",
+                               fillOpacity = 0.7,
+                               popup = paste0("<strong>", "Subbasin Name: ", "</strong>", map_data$sbbsn_n, "<br>",
+                                              "<em>", "no predicted increase in spawners", "</em>")) %>% 
+  addScaleBar(position = "bottomleft")
+
