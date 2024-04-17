@@ -7,11 +7,6 @@ pickerInput(inputId = inputId, label = "Pick Restoration Action:",
             selected = "Floodplain",
             options = pickerOptions(actionsBox = TRUE),
             multiple = FALSE)
-<<<<<<< HEAD
-     
-}
-
-=======
 }
 
 
@@ -37,4 +32,4 @@ species_pickerInput <- function(inputId) {
 }
 
 
->>>>>>> bd1ec9aaac423224a806e3de0bf5ee8687a49d44
+
