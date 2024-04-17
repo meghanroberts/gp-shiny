@@ -189,7 +189,7 @@ body <- dashboardBody(
               
               # input box ----
               box(width = 12,
-                  title = tagList(icon("fish"), 
+                  title = tagList(icon("person"), 
                                   strong("Demographics of Stillaguamish Subbasins")),
                   includeMarkdown("text/demo.md")
                   
