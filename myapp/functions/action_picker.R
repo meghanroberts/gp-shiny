@@ -25,7 +25,7 @@ rest_multiaction_pickerInput <- function(inputId) {
 species_pickerInput <- function(inputId) {
   
   pickerInput(inputId = inputId, label = "Pick Species:",
-              choices = c("Chinook", "Coho", "Steelhead"),
+              choices = c("Chinook"="fall_chinook", "Coho"="coho", "Steelhead"="steelhead"),
               selected = "Chinook",
               options = pickerOptions(actionsBox = TRUE),
               multiple = FALSE)

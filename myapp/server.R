@@ -41,25 +41,58 @@ server <- function(input, output) {
   
   ##BEN TAB 
   
-  # START ben filter df ----
+  # Function to create the bar chart
+  spawner_barchart <- function(data) {
+    ggplot(data = data, aes(x = sbbsn_n, 
+                            y = n_diff, 
+                            fill = rst_typ)) +
+      theme_minimal() +
+      geom_col() +
+      labs(fill = "Restoration Type", 
+           x = "", 
+           y = "# Annual Steelhead Spawners",
+           title = "Modeled Annual Steelhead Spawner Increases") +
+      coord_flip() +
+      scale_fill_manual(values = c("#03045E", "#19647E", "#28AFB0"),
+                        labels = c("Riparian Planting", "Engineered Log Jam", "Floodplain"),
+                        guide = guide_legend(reverse = TRUE)) +
+      theme(plot.title.position = "plot",
+            axis.text.x = element_text(size = 14),  
+            axis.text.y = element_text(size = 14),
+            axis.title.x = element_text(size = 16, margin = margin(t = 15)),
+            plot.title = element_text(size = 20, margin = margin(b = 15)))
+  }
   
-  master_ben_filtered<- reactive({ 
+  # START ben filter df ----
     
-    master %>% 
-      filter(!is.na(cb_rati),
-             pop == c(input$species_input),
-             rst_typ == c(input$ben_rest_input)) %>%
-      as.data.frame()  
-    
-  }) # END ben filter df
+    master_ben_filtered <- reactive({ 
+      filtered_data <- master %>%
+        filter(pop == input$spp_input
+               # ,rst_typ == c(input$ben_rest_input)
+               ) %>%
+        mutate(rst_typ=factor(rst_typ, levels = c("Floodplain", "Engineered Log Jams",
+                                                     "Riparian Planting"))) %>%
+        mutate(n_diff=as.numeric(n_diff)) %>% 
+        as.data.frame()
+    })
   
   # START ben graph  ----  
   
   output$ben_fig_output <- renderPlot({
-    ben_plot(data = master_ben_filtered(), species_input = input$species_input, 
-                     rest_input=input$ben_rest_input)
-    
-  }) # END ben graph
+    spawner_barchart2(data = master_ben_filtered(), spp=input$spp_input)
+  })
+  
+  # output$ben_fig_output <- renderPlot({
+  #   spawner_barchart(data=master_ben_filtered())
+  #   
+  #   spawner_barchart
+  #   # ben_plot(data = master_ben_filtered()
+  #   #          , spp_input = input$spp_input
+  #   #          # ,
+  #   #          #         rest_input=input$ben_rest_input
+  #   #          )
+  #   
+  # }) # END ben graph
   
   ##BEN TAB END
   

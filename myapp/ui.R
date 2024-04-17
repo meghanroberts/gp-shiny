@@ -75,7 +75,8 @@ body <- dashboardBody(
     tabItem(tabName = "map",
             
             fluidRow(
-              leafletOutput("map")
+              leafletOutput("map")%>% 
+                shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
             )
             
     ), # END map tabItem
@@ -99,7 +100,8 @@ body <- dashboardBody(
               box(width = 12, 
                   
                   # cost dumbell output ----
-                  plotOutput(outputId = "cost_dumbell_output")
+                  plotOutput(outputId = "cost_dumbell_output")%>% 
+                    shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
                   
               ) # END cost dumbell box
               
@@ -119,7 +121,7 @@ body <- dashboardBody(
                   # figure pickerInputs ----
                   rest_multiaction_pickerInput(inputId = "ben_rest_input"),
                   # figure pickerInputs ----
-                  species_pickerInput(inputId = "species_input")
+                  species_pickerInput(inputId = "spp_input")
                   
               ), # END input box
               
@@ -127,7 +129,8 @@ body <- dashboardBody(
               box(width = 12, 
                   
                   # ben plot output ----
-                  plotOutput(outputId = "ben_fig_output")
+                  plotOutput(outputId = "ben_fig_output")%>% 
+                    shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
                   
               ) # END leaflet box
               
@@ -153,7 +156,8 @@ body <- dashboardBody(
               box(width = 12, 
                   
                   # cost effectiveness output ----
-                  plotOutput(outputId = "cost_effectiveness_output")
+                  plotOutput(outputId = "cost_effectiveness_output")%>% 
+                    shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
                   
               ) # END cost effectiveness graph
               
