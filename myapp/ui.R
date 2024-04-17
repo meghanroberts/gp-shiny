@@ -25,6 +25,18 @@ body <- dashboardBody(
   # set theme
   fresh::use_theme("shinydashboard-fresh-theme.css"),
   
+  tags$head(
+    tags$style(HTML('
+      /* Remove borders and shadows from all boxes */
+      .box {
+        border: none !important;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        box-shadow: none !important;
+      }
+    '))),
+
+  
   # tabItems ----
   tabItems(
     

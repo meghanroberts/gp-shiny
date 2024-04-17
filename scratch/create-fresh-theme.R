@@ -11,7 +11,15 @@ create_theme(
   
   # dashboardBody styling (includes boxes)
   adminlte_global(
-    content_bg = "#FFFFFF" # blush pink
+    content_bg = "#FFFFFF", 
+    custom_css = '
+      /* Remove box shadows from all boxes */
+      .box {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+      }
+    '
   ),
   
   # dashboardSidebar styling
