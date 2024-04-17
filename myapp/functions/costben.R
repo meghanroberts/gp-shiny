@@ -30,41 +30,24 @@ cost_dumbell_chart <- function(data, input) {
           plot.title = element_text(size = 20, margin = margin(b = 15)))
 }
 
-
-#NEW BENEFITS
-ben_plot <- function(data, spp_input) {
-  ggplot(data, aes(x = sbbsn_n, 
-                   y = n_diff
-                   # , fill = rst_typ
-                   ))+
-    geom_col(fill = "#03045E")+
-    theme_minimal() +
-    labs(fill = "Restoration Type", 
-         x = "", 
-         y = paste("# Annual", spp_input, "Spawners"),
-         title = paste("Modeled Annual", spp_input, "Spawner Increases"))+
-    coord_flip() +
-    theme(plot.title.position = "plot",
-          axis.text.x = element_text(size = 14),  
-          axis.text.y = element_text(size = 14),
-          axis.title.x = element_text(size = 16, margin = margin(t = 15)),
-          plot.title = element_text(size = 20, margin = margin(b = 15)))
-}
-
-
-
 # # Benefits
 
+#correct for mismatch between code name and what I want displayed
 species_mapping <- c("fall_chinook" = "Chinook",
                      "coho" = "Coho",
                      "steelhead" = "Steelhead")
 
+restoration_colors <- c("Riparian Planting" = "#03045E",
+                        "Engineered Log Jams" = "#19647E",
+                        "Floodplain" = "#28AFB0")
+
+#function for spawner barchart
 spawner_barchart2 <- function(data, spp) {
   full_species_name <- species_mapping[spp]
   
   ggplot(data = data, aes(x = sbbsn_n, 
                           y = n_diff, 
-                          fill = rst_typ)) +
+                          fill = as.factor(rst_typ))) +
     theme_minimal() +
     geom_col() +
     labs(fill = "Restoration Type", 
@@ -72,8 +55,9 @@ spawner_barchart2 <- function(data, spp) {
          y = paste("# Annual", full_species_name, "Spawners"),
          title = paste("Modeled Annual", full_species_name, "Spawner Increases")) +
     coord_flip() +
-    scale_fill_manual(values = c("#03045E", "#19647E", "#28AFB0"),
-                      labels = c("Riparian Planting", "Engineered Log Jam", "Floodplain"),
+    scale_fill_manual(values = restoration_colors,
+      # values = c("Riparian Planting"="#03045E", "Engineered Log Jam"="#19647E", "Floodplain"="#28AFB0"),
+                      # labels = c("Riparian Planting", "Engineered Log Jam", "Floodplain"),
                       guide = guide_legend(reverse = TRUE)) +
     theme(plot.title.position = "plot",
           axis.text.x = element_text(size = 14),  
@@ -81,6 +65,7 @@ spawner_barchart2 <- function(data, spp) {
           axis.title.x = element_text(size = 16, margin = margin(t = 15)),
           plot.title = element_text(size = 20, margin = margin(b = 15)))
 }
+
 # Cost effectiveness 
 
 cost_effectiveness_bar <- function(data, input) {

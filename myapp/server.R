@@ -73,8 +73,11 @@ server <- function(input, output) {
         mutate(rst_typ=factor(rst_typ, levels = c("Floodplain", "Engineered Log Jams",
                                                      "Riparian Planting"))) %>%
         mutate(n_diff=as.numeric(n_diff)) %>% 
+        filter(n_diff>0) %>% 
         as.data.frame()
     })
+  
+  
   
   # START ben graph  ----  
   
@@ -82,16 +85,7 @@ server <- function(input, output) {
     spawner_barchart2(data = master_ben_filtered(), spp=input$spp_input)
   })
   
-  # output$ben_fig_output <- renderPlot({
-  #   spawner_barchart(data=master_ben_filtered())
-  #   
-  #   spawner_barchart
-  #   # ben_plot(data = master_ben_filtered()
-  #   #          , spp_input = input$spp_input
-  #   #          # ,
-  #   #          #         rest_input=input$ben_rest_input
-  #   #          )
-  #   
+   
   # }) # END ben graph
   
   ##BEN TAB END

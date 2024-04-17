@@ -118,8 +118,8 @@ body <- dashboardBody(
               # input box ----
               box(width = 12,
                   
-                  # figure pickerInputs ----
-                  rest_multiaction_pickerInput(inputId = "ben_rest_input"),
+                  # # figure pickerInputs ----
+                  # rest_multiaction_pickerInput(inputId = "ben_rest_input"),
                   # figure pickerInputs ----
                   species_pickerInput(inputId = "spp_input")
                   
@@ -127,7 +127,7 @@ body <- dashboardBody(
               
               # leaflet box ----
               box(width = 12, 
-                  
+               
                   # ben plot output ----
                   plotOutput(outputId = "ben_fig_output")%>% 
                     shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
