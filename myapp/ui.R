@@ -72,6 +72,22 @@ body <- dashboardBody(
                    
             ), # END bottom column
             
+            # bottom column ----
+            column(width = 12,
+                   
+                   # first fluidRow ----
+                   fluidRow(
+                     
+                     # data source box ----
+                     box(width = NULL,
+                         includeMarkdown("text/purpose.md")
+                         
+                     ) # END data source box
+                     
+                   )
+                   
+            ), # END bottom column
+            
     ), # END background tabItem
     
     # map tabItem ----
