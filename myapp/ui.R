@@ -9,16 +9,16 @@ header <- dashboardHeader(
 #........................dashboardSidebar........................
 sidebar <- dashboardSidebar(
   sidebarMenu(id = "tabs",
-  
-  #different pages
-  menuItem(text = "Background", tabName = "background", icon = icon("star"), selected = TRUE),
-  menuItem(text = "Summary Results", tabName = "map", icon = icon("map-pin")),
-  menuItem(text = "Cost", tabName = "cost", icon = icon("money-bill-1")),
-  menuItem(text = "Benefits", tabName = "ben", icon = icon("fish")),
-  menuItem(text = "Cost Effectiveness", tabName = "ce", icon = icon("dollar-sign")),
-  menuItem(text = "Demographic Info", tabName = "demo", icon = icon("person"))
-  
-))#END dashboardsidebar
+              
+              #different pages
+              menuItem(text = "Background", tabName = "background", icon = icon("star"), selected = TRUE),
+              menuItem(text = "Summary Results", tabName = "map", icon = icon("map-pin")),
+              menuItem(text = "Cost", tabName = "cost", icon = icon("money-bill-1")),
+              menuItem(text = "Benefits", tabName = "ben", icon = icon("fish")),
+              menuItem(text = "Cost Effectiveness", tabName = "ce", icon = icon("dollar-sign")),
+              menuItem(text = "Demographic Info", tabName = "demo", icon = icon("person"))
+              
+  ))#END dashboardsidebar
 
 #..........................dashboardBody.........................
 body <- dashboardBody(
@@ -57,7 +57,7 @@ body <- dashboardBody(
                    #background info box
                    box(width=12, #takes on width of the column
                        title = tagList(
-                                       strong("Chinook Salmon Habitat Restoration")),
+                         strong("Chinook Salmon Habitat Restoration")),
                        includeMarkdown("text/intro.md")
                    ) #END background box
                    
@@ -115,10 +115,10 @@ body <- dashboardBody(
             
             fluidRow(box(width = 12,
                          title = tagList( 
-                                         strong("Summary")),
+                           strong("Summary")),
                          includeMarkdown("text/summary.md")),
-              leafletOutput("map")%>% 
-                shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
+                     leafletOutput("map")%>% 
+                       shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
             )
             
     ), # END map tabItem
@@ -130,7 +130,7 @@ body <- dashboardBody(
             fluidRow(
               box(width=12, #takes on width of the column
                   title = tagList( 
-                                  strong("Restoration Costs")),
+                    strong("Restoration Costs")),
                   includeMarkdown("text/cost.md"),
                   restoration_action_pickerInput(inputId = "cost_dumbell_input")
                   
@@ -143,7 +143,23 @@ body <- dashboardBody(
                   plotOutput(outputId = "cost_dumbell_output")%>% 
                     shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
                   
-              ) # END cost dumbell box
+              ), # END cost dumbell box
+              
+              box(width=12, #takes on width of the column
+                  title = tagList( 
+                    strong("Additional Costs")),
+                  includeMarkdown("text/landcosts.md")
+                  
+              ), # END input box
+              
+              # land cost barchart ----
+              box(width = 12, 
+                  
+                  # land cost barchart output ----
+                  plotOutput(outputId = "land_cost_barchart_output")%>% 
+                    shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
+                  
+              ), # END land cost barchart box
               
             ) # END fluidRow
             
@@ -158,7 +174,7 @@ body <- dashboardBody(
               # input box ----
               box(width = 12,
                   title = tagList(
-                                  strong("Benefits of Restoration")),
+                    strong("Benefits of Restoration")),
                   includeMarkdown("text/ben.md"),
                   species_pickerInput(inputId = "spp_input")
                   
@@ -184,7 +200,7 @@ body <- dashboardBody(
             fluidRow(
               box(width=12, #takes on width of the column
                   title = tagList(
-                                  strong("Cost Effectiveness")),
+                    strong("Cost Effectiveness")),
                   includeMarkdown("text/ce.md"),
                   restoration_action_pickerInput(inputId = "cost_effectiveness_input"),
                   
@@ -212,7 +228,7 @@ body <- dashboardBody(
               
               # input box ----
               box(width = 12,
-
+                  
                   title = tagList(strong("Demographics of Stillaguamish Subbasins")),
                   includeMarkdown("text/demo.md")
                   

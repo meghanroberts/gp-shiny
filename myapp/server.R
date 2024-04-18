@@ -35,6 +35,16 @@ server <- function(input, output) {
     
   }) # END cost dumbbell graph
   
+
+  
+  #START land cost barchart ----
+  output$land_cost_barchart_output <- renderPlot({
+    
+    # from cost function 
+    ag_land_price_barchart
+    
+  })  # END land cost barchart
+  
   ##COST TAB END
   
   

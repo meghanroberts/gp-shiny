@@ -101,6 +101,27 @@ cost_effectiveness_bar <- function(data, input) {
 
 
 
+# Cost of ag land
+ag_land_price_barchart<- ag_land_cost %>% 
+  ggplot(aes(
+    x = reorder(subbasin_name, total_subba_cost),
+    y = total_subba_cost/1000000)) +
+  theme_minimal() +
+  geom_col(fill = "#03045E") +
+  labs(x = "", 
+       y = "Cost ($ million)",
+       title = "Price of Agricultural Floodplain Habitat") +  
+  coord_flip() + 
+  scale_y_continuous(expand = c(0,0), 
+                     labels = scales::label_dollar(scale = 1, suffix = "M")) +
+  theme(plot.title.position = "plot",
+        axis.text.x = element_text(size = 14),  
+        axis.text.y = element_text(size = 14),
+        axis.title.x = element_text(size = 16, margin = margin(t = 15)),
+        plot.title = element_text(size = 20, margin = margin(b = 15)),
+        panel.grid.major.y  = element_blank(),
+        panel.grid.minor.x  = element_blank())
+
 
 
 
