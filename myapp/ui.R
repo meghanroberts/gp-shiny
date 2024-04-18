@@ -2,7 +2,7 @@
 header <- dashboardHeader(
   
   #title
-  title = "Restoration of Chinook Salmon in the Stillaguamish River Basin",
+  title = "Chinook Habitat Restoration in the Stillaguamish River Basin",
   titleWidth = 550 #adjust accordingly
 ) # END dashboardHeader
 
@@ -11,10 +11,10 @@ sidebar <- dashboardSidebar(
   sidebarMenu(id = "tabs",
   
   #different pages
-  menuItem(text = "Background", tabName = "background", icon = icon("star")),
+  menuItem(text = "Background", tabName = "background", icon = icon("star"), selected = TRUE),
   menuItem(text = "Summary Results", tabName = "map", icon = icon("map-pin")),
   menuItem(text = "Cost", tabName = "cost", icon = icon("money-bill-1")),
-  menuItem(text = "Benefits", tabName = "ben", icon = icon("fish"), selected = TRUE),
+  menuItem(text = "Benefits", tabName = "ben", icon = icon("fish")),
   menuItem(text = "Cost Effectiveness", tabName = "ce", icon = icon("dollar-sign")),
   menuItem(text = "Demographic Info", tabName = "demo", icon = icon("person"))
   
@@ -212,12 +212,8 @@ body <- dashboardBody(
               
               # input box ----
               box(width = 12,
-<<<<<<< HEAD
-                  title = tagList( 
-=======
-                  title = tagList(icon("person"), 
->>>>>>> 9ea130d3737b2999f4940e0d0ce8b748dfc2b4e8
-                                  strong("Demographics of Stillaguamish Subbasins")),
+
+                  title = tagList(strong("Demographics of Stillaguamish Subbasins")),
                   includeMarkdown("text/demo.md")
                   
               ), # END input box

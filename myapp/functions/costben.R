@@ -59,6 +59,11 @@ spawner_barchart2 <- function(data, spp) {
       # values = c("Riparian Planting"="#03045E", "Engineered Log Jam"="#19647E", "Floodplain"="#28AFB0"),
                       # labels = c("Riparian Planting", "Engineered Log Jam", "Floodplain"),
                       guide = guide_legend(reverse = TRUE)) +
+    guides(fill = guide_legend(title = "Restoration Type", 
+                               title.theme = element_text(size = 15), 
+                               label.theme = element_text(size = 13),
+                               keywidth = 2, 
+                               keyheight = 2)) +
     theme(plot.title.position = "plot",
           axis.text.x = element_text(size = 14),  
           axis.text.y = element_text(size = 14),
