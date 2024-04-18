@@ -25,7 +25,7 @@ leaflet <-
     popup = paste0("<strong>", "Subbasin Name: ", "</strong>", map_data$sbbsn_n, "<br>",
                    "<strong>", "Action: ", "</strong>", map_data$rst_typ, "<br>",
                    "<strong>", "Cost Effectiveness Ratio: ", "</strong>", "$", map_data$cb_rati, "/Chinook", "<br>",
-                   "<strong>", "Average Cost: ", "</strong>", "$ ", map_data$ttl_vg_, "<br>",
+                   "<strong>", "Average Cost: ", "</strong>", "$", map_data$ttl_vg_, "<br>",
                    "<strong>", "# of Spawners: ", "</strong>", map_data$n_diff)) %>% 
   addLegend(position = "bottomright", opacity = 0.8, pal = summ_palette, values = ~rst_typ, title = "Restoration Type") %>% 
   
