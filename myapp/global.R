@@ -8,7 +8,8 @@ library(leaflet)
 
 
 # master data 
-master <- st_read("data/processed/master.shp") 
+master <- st_read("data/processed/master.shp") %>% 
+ mutate(sbbsn_n=gsub("  ", " ", sbbsn_n))
 # map data with benefits and actions
 map_data <- st_read("data/processed/map_data/map_data.shp")
 # map data without benefits or actions

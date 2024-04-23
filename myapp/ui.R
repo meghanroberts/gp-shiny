@@ -140,6 +140,15 @@ body <- dashboardBody(
                   
               ), # END input box
               
+              # unit cost dumbell ----
+              box(width = 12, 
+                  
+                  # cost dumbell output ----
+                  plotOutput(outputId = "unit_cost_dumbell_output")%>% 
+                    shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
+                  
+              ), # END unit cost dumbell box
+              
               # cost dumbell ----
               box(width = 12, 
                   
@@ -149,14 +158,7 @@ body <- dashboardBody(
                   
               ), # END cost dumbell box
               
-              # cost dumbell ----
-              box(width = 12, 
-                  
-                  # cost dumbell output ----
-                  plotOutput(outputId = "unit_cost_dumbell_output")%>% 
-                    shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
-                  
-              ), # END cost dumbell box
+              
               
               box(width=12, #takes on width of the column
                   title = tagList( 

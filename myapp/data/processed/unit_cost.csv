@@ -1,85 +1,66 @@
 "","subbasin","restoration","metric","lower_average_cost","upper_average_cost"
-"1","Boulder_River","Engineered Log Jams","per_mile",45075,112687
-"2","Boulder_River","Engineered Log Jams","per_structure",52758,117297
-"3","Canyon_Creek","Engineered Log Jams","per_mile",43132,108801
-"4","Canyon_Creek","Engineered Log Jams","per_structure",75478,133941
-"5","Deer_Creek","Engineered Log Jams","per_mile",41318,105174
-"6","Deer_Creek","Engineered Log Jams","per_structure",99880,155187
-"7","Jim_Creek","Engineered Log Jams","per_mile",42571,107678
-"8","Jim_Creek","Engineered Log Jams","per_structure",61094,125060
-"9","Pilchuck_Creek","Engineered Log Jams","per_mile",37970,98478
-"10","Pilchuck_Creek","Engineered Log Jams","per_structure",49014,113145
-"11","Squire_Creek","Engineered Log Jams","per_mile",36796,96129
-"12","Squire_Creek","Engineered Log Jams","per_structure",67356,129846
-"13","Upland_French-Segelsen","Engineered Log Jams","per_mile",40747,104032
-"14","Upland_French-Segelsen","Engineered Log Jams","per_structure",48267,115128
-"15","Upland_Gold_Basin","Engineered Log Jams","per_mile",43749,110035
-"16","Upland_Gold_Basin","Engineered Log Jams","per_structure",67773,128624
-"17","Upland_Lower_North_Fk_Stillaguamish","Engineered Log Jams","per_mile",42021,106580
-"18","Upland_Lower_North_Fk_Stillaguamish","Engineered Log Jams","per_structure",51335,118321
-"19","Upland_Middle_North_Fk_Stillaguamish","Engineered Log Jams","per_mile",41050,104638
-"20","Upland_Middle_North_Fk_Stillaguamish","Engineered Log Jams","per_structure",68494,135322
-"21","mainstem_North_Fork_Stillaguamish_01","Engineered Log Jams","per_mile",36317,95171
-"22","mainstem_North_Fork_Stillaguamish_01","Engineered Log Jams","per_structure",33806,101418
-"23","mainstem_North_Fork_Stillaguamish_02","Engineered Log Jams","per_mile",39874,102285
-"24","mainstem_North_Fork_Stillaguamish_02","Engineered Log Jams","per_structure",33806,101418
-"25","mainstem_North_Fork_Stillaguamish_03","Engineered Log Jams","per_mile",40302,103141
-"26","mainstem_North_Fork_Stillaguamish_03","Engineered Log Jams","per_structure",33806,101418
-"27","mainstem_North_Fork_Stillaguamish_04","Engineered Log Jams","per_mile",45075,112687
-"28","mainstem_North_Fork_Stillaguamish_04","Engineered Log Jams","per_structure",43431,108696
-"29","mainstem_South_Fork_Stillaguamish_01","Engineered Log Jams","per_mile",42334,107205
-"30","mainstem_South_Fork_Stillaguamish_01","Engineered Log Jams","per_structure",33806,101418
-"31","mainstem_South_Fork_Stillaguamish_02","Engineered Log Jams","per_mile",45075,112687
-"32","mainstem_South_Fork_Stillaguamish_02","Engineered Log Jams","per_structure",99164,154483
-"33","mainstem_South_Fork_Stillaguamish_03","Engineered Log Jams","per_mile",40127,102792
-"34","mainstem_South_Fork_Stillaguamish_03","Engineered Log Jams","per_structure",55476,114420
-"35","mainstem_South_Fork_Stillaguamish_04","Engineered Log Jams","per_mile",44284,111105
-"36","mainstem_South_Fork_Stillaguamish_04","Engineered Log Jams","per_structure",90149,135224
-"37","mainstem_South_Fork_Stillaguamish_05","Engineered Log Jams","per_mile",44819,112174
-"38","mainstem_South_Fork_Stillaguamish_05","Engineered Log Jams","per_structure",85815,132624
-"39","mainstem_Stillaguamish","Engineered Log Jams","per_mile",31782,86101
-"40","mainstem_Stillaguamish","Engineered Log Jams","per_structure",33806,101418
-"41","Canyon_Creek","Floodplain","per acre",12339,22194
-"42","Deer_Creek","Floodplain","per acre",19343,36269
-"43","Deer_Creek","Floodplain","per acre",19343,36269
-"44","Jim_Creek","Floodplain","per acre",2059,3273
-"45","Pilchuck_Creek","Floodplain","per acre",7102,11358
-"46","Squire_Creek","Floodplain","per acre",31572,50926
-"47","Upland_Lower_North_Fk_Stillaguamish","Floodplain","per acre",1467,2134
-"48","Upland_Lower_South_Fk_Stillaguamish","Floodplain","per acre",9720,13886
-"49","Upland_Lower_Stillaguamish","Floodplain","per acre",98143,140204
-"50","Upland_Middle_North_Fk_Stillaguamish","Floodplain","per acre",1860,3720
-"51","mainstem_North_Fork_Stillaguamish_01","Floodplain","per acre",156323,236903
-"52","mainstem_North_Fork_Stillaguamish_01","Floodplain","per acre",156323,236903
-"53","mainstem_North_Fork_Stillaguamish_01","Floodplain","per acre",156323,236903
-"54","mainstem_North_Fork_Stillaguamish_02","Floodplain","per acre",75541,116140
-"55","mainstem_North_Fork_Stillaguamish_02","Floodplain","per acre",75541,116140
-"56","mainstem_North_Fork_Stillaguamish_03","Floodplain","per acre",34521,52737
-"57","mainstem_North_Fork_Stillaguamish_03","Floodplain","per acre",34521,52737
-"58","mainstem_North_Fork_Stillaguamish_04","Floodplain","per acre",117027,178820
-"59","mainstem_South_Fork_Stillaguamish_01","Floodplain","per acre",150125,230944
-"60","mainstem_South_Fork_Stillaguamish_01","Floodplain","per acre",150125,230944
-"61","mainstem_South_Fork_Stillaguamish_03","Floodplain","per acre",37141,57146
-"62","mainstem_South_Fork_Stillaguamish_04","Floodplain","per acre",9940,16227
-"63","mainstem_Stillaguamish","Floodplain","per acre",100285,154727
-"64","mainstem_Stillaguamish","Floodplain","per acre",100285,154727
-"65","Boulder_River","Riparian Planting","per_acre",10225,29424
-"66","Canyon_Creek","Riparian Planting","per_acre",66851,109335
-"67","Deer_Creek","Riparian Planting","per_acre",80271,126669
-"68","Jim_Creek","Riparian Planting","per_acre",49705,92749
-"69","Pilchuck_Creek","Riparian Planting","per_acre",18514,57160
-"70","Squire_Creek","Riparian Planting","per_acre",16600,47135
-"71","Upland_French-Segelsen","Riparian Planting","per_acre",41450,89464
-"72","Upland_Gold_Basin","Riparian Planting","per_acre",99285,160332
-"73","Upland_Lower_North_Fk_Stillaguamish","Riparian Planting","per_acre",41539,91232
-"74","Upland_Middle_North_Fk_Stillaguamish","Riparian Planting","per_acre",87312,142178
-"75","mainstem_North_Fork_Stillaguamish_01","Riparian Planting","per_acre",9573,36212
-"76","mainstem_North_Fork_Stillaguamish_02","Riparian Planting","per_acre",10240,36355
-"77","mainstem_North_Fork_Stillaguamish_03","Riparian Planting","per_acre",7811,30195
-"78","mainstem_North_Fork_Stillaguamish_04","Riparian Planting","per_acre",28960,56512
-"79","mainstem_South_Fork_Stillaguamish_01","Riparian Planting","per_acre",5698,23925
-"80","mainstem_South_Fork_Stillaguamish_02","Riparian Planting","per_acre",43103,63105
-"81","mainstem_South_Fork_Stillaguamish_03","Riparian Planting","per_acre",6366,27074
-"82","mainstem_South_Fork_Stillaguamish_04","Riparian Planting","per_acre",10740,30989
-"83","mainstem_South_Fork_Stillaguamish_05","Riparian Planting","per_acre",9278,29856
-"84","mainstem_Stillaguamish","Riparian Planting","per_acre",9685,43384
+"1","Boulder River","Engineered Log Jams","per_mile",45075,112687
+"2","Boulder River","Engineered Log Jams","per_structure",52758,117297
+"3","Canyon Creek","Engineered Log Jams","per_mile",43132,108801
+"4","Canyon Creek","Engineered Log Jams","per_structure",75478,133941
+"5","Deer Creek","Engineered Log Jams","per_mile",41318,105174
+"6","Deer Creek","Engineered Log Jams","per_structure",99880,155187
+"7","Jim Creek","Engineered Log Jams","per_mile",42571,107678
+"8","Jim Creek","Engineered Log Jams","per_structure",61094,125060
+"9","Pilchuck Creek","Engineered Log Jams","per_mile",37970,98478
+"10","Pilchuck Creek","Engineered Log Jams","per_structure",49014,113145
+"11","Squire Creek","Engineered Log Jams","per_mile",36796,96129
+"12","Squire Creek","Engineered Log Jams","per_structure",67356,129846
+"13","Mainstem North Fork 01","Engineered Log Jams","per_mile",36317,95171
+"14","Mainstem North Fork 01","Engineered Log Jams","per_structure",33806,101418
+"15","Mainstem North Fork 02","Engineered Log Jams","per_mile",39874,102285
+"16","Mainstem North Fork 02","Engineered Log Jams","per_structure",33806,101418
+"17","Mainstem North Fork 03","Engineered Log Jams","per_mile",40302,103141
+"18","Mainstem North Fork 03","Engineered Log Jams","per_structure",33806,101418
+"19","Mainstem North Fork 04","Engineered Log Jams","per_mile",45075,112687
+"20","Mainstem North Fork 04","Engineered Log Jams","per_structure",43431,108696
+"21","Mainstem South Fork 01","Engineered Log Jams","per_mile",42334,107205
+"22","Mainstem South Fork 01","Engineered Log Jams","per_structure",33806,101418
+"23","Mainstem South Fork 03","Engineered Log Jams","per_mile",40127,102792
+"24","Mainstem South Fork 03","Engineered Log Jams","per_structure",55476,114420
+"25","Mainstem South Fork 04","Engineered Log Jams","per_mile",44284,111105
+"26","Mainstem South Fork 04","Engineered Log Jams","per_structure",90149,135224
+"27","Mainstem South Fork 05","Engineered Log Jams","per_mile",44819,112174
+"28","Mainstem South Fork 05","Engineered Log Jams","per_structure",85815,132624
+"29","Mainstem Stillaguamish","Engineered Log Jams","per_mile",31782,86101
+"30","Mainstem Stillaguamish","Engineered Log Jams","per_structure",33806,101418
+"31","Canyon Creek","Floodplain","per_acre",12339,22194
+"32","Deer Creek","Floodplain","per_acre",19343,36269
+"33","Deer Creek","Floodplain","per_acre",19343,36269
+"34","Jim Creek","Floodplain","per_acre",2059,3273
+"35","Pilchuck Creek","Floodplain","per_acre",7102,11358
+"36","Squire Creek","Floodplain","per_acre",31572,50926
+"37","Mainstem North Fork 01","Floodplain","per_acre",156323,236903
+"38","Mainstem North Fork 01","Floodplain","per_acre",156323,236903
+"39","Mainstem North Fork 01","Floodplain","per_acre",156323,236903
+"40","Mainstem North Fork 02","Floodplain","per_acre",75541,116140
+"41","Mainstem North Fork 02","Floodplain","per_acre",75541,116140
+"42","Mainstem North Fork 03","Floodplain","per_acre",34521,52737
+"43","Mainstem North Fork 03","Floodplain","per_acre",34521,52737
+"44","Mainstem North Fork 04","Floodplain","per_acre",117027,178820
+"45","Mainstem South Fork 01","Floodplain","per_acre",150125,230944
+"46","Mainstem South Fork 01","Floodplain","per_acre",150125,230944
+"47","Mainstem South Fork 03","Floodplain","per_acre",37141,57146
+"48","Mainstem South Fork 04","Floodplain","per_acre",9940,16227
+"49","Mainstem Stillaguamish","Floodplain","per_acre",100285,154727
+"50","Mainstem Stillaguamish","Floodplain","per_acre",100285,154727
+"51","Boulder River","Riparian Planting","per_acre",10225,29424
+"52","Canyon Creek","Riparian Planting","per_acre",66851,109335
+"53","Deer Creek","Riparian Planting","per_acre",80271,126669
+"54","Jim Creek","Riparian Planting","per_acre",49705,92749
+"55","Pilchuck Creek","Riparian Planting","per_acre",18514,57160
+"56","Squire Creek","Riparian Planting","per_acre",16600,47135
+"57","Mainstem North Fork 01","Riparian Planting","per_acre",9573,36212
+"58","Mainstem North Fork 02","Riparian Planting","per_acre",10240,36355
+"59","Mainstem North Fork 03","Riparian Planting","per_acre",7811,30195
+"60","Mainstem North Fork 04","Riparian Planting","per_acre",28960,56512
+"61","Mainstem South Fork 01","Riparian Planting","per_acre",5698,23925
+"62","Mainstem South Fork 03","Riparian Planting","per_acre",6366,27074
+"63","Mainstem South Fork 04","Riparian Planting","per_acre",10740,30989
+"64","Mainstem South Fork 05","Riparian Planting","per_acre",9278,29856
+"65","Mainstem Stillaguamish","Riparian Planting","per_acre",9685,43384

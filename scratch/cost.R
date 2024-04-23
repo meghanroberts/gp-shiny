@@ -59,7 +59,7 @@ fp<-read_csv(here("myapp", "data", "not_processed", "average_fp_costs.csv")) %>%
   group_by(Subbasin) %>% mutate(upper_average_cost=sum(upper_avg_cost), 
                                 lower_average_cost=sum(lower_avg_cost),
                                 Restoration="Floodplain", 
-                                Metric="per acre") %>% 
+                                Metric="per_acre") %>% 
   unique() %>% clean_names %>% select(-c(lower_avg_cost, upper_avg_cost))
 
 rp<-read_csv(here("myapp", "data", "not_processed", "average_rp_costs.csv")) %>% clean_names()%>% 
@@ -73,9 +73,28 @@ rp<-read_csv(here("myapp", "data", "not_processed", "average_rp_costs.csv")) %>%
 avg_master<-full_join(elj, fp)
 avg_master<-full_join(avg_master, rp) %>% 
   mutate(restoration=gsub("rp", "Riparian Planting", restoration)) %>% 
-  mutate(restoration=gsub("elj", "Engineered Log Jams", restoration))
+  mutate(restoration=gsub("elj", "Engineered Log Jams", restoration)) %>% 
+  filter(subbasin %in% c("mainstem_Stillaguamish",
+           "mainstem_North_Fork_Stillaguamish_01",
+           "mainstem_North_Fork_Stillaguamish_02",
+           "mainstem_North_Fork_Stillaguamish_03",
+           "mainstem_North_Fork_Stillaguamish_04",
+           "mainstem_South_Fork_Stillaguamish_01",
+           "mainstem_South_Fork_Stillaguamish_03",
+           "mainstem_South_Fork_Stillaguamish_04",
+           "Squire_Creek",
+           "Pilchuck_Creek",
+           "Jim_Creek",
+           "Canyon_Creek",
+           "Deer_Creek",
+           "Boulder_River",
+           "mainstem_South_Fork_Stillaguamish_05")) %>% 
+  mutate(subbasin=gsub("_", " ", subbasin)) %>% 
+  mutate(subbasin=gsub("mainstem", "Mainstem", subbasin)) %>% 
+  mutate(subbasin=gsub("Stillaguamish ", "", subbasin))
 
 write.csv(avg_master, here("myapp", "data", "processed", "unit_cost.csv"))
+
 
 #plot for avg per acre or per mile
 ggplot(data = avg_master, aes(group = restoration)) +
@@ -92,10 +111,10 @@ geom_segment(aes(x = lower_average_cost, xend = upper_average_cost,
                  color = restoration, group = restoration), size = 3, color = "#03045E") +
   # axis breaks & $ labels ----
 # scale_x_continuous(labels = scales::label_dollar(scale = 0.000001, suffix = "M")) +
-  # pushing y axis labels to edhe of data 
-  labs(x = "Cost Per Acre",
-       y = "",
-       title = paste( "FP Habitat Restoration Costs")) +
+# pushing y axis labels to edhe of data 
+labs(x = "Cost Per Acre",
+     y = "",
+     title = paste( "FP Habitat Restoration Costs")) +
   theme_minimal() +
   theme(plot.title.position = "plot",
         axis.text.x = element_text(size = 14),  

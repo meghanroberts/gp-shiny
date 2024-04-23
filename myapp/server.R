@@ -41,22 +41,28 @@ server <- function(input, output) {
   ## filter for unit cost
   unit_cost_filtered <- reactive({ 
     
-    unit_cost_master %>% 
-      filter(restoration == c(input$cost_dumbell_input))
+    # unit_cost_master %>% 
+    #   filter(restoration == c(input$cost_dumbell_input))
     
+    if (input$cost_dumbell_input == "Engineered Log Jams") {
+      unit_cost_master %>%
+        filter(metric == input$elj_unit_input)
+    } else {
+      unit_cost_master
+    }
   }) # END unit cost dumbbell filter df
   
   # START UNIT cost dumbell graph
   output$unit_cost_dumbell_output <- renderPlot({ 
     # unit_cost_dumbell_chart
-
-# from cost function
-unit_cost_dumbell_chart(data = unit_cost_filtered(),
-                   input = input$cost_dumbell_input)
-
+    
+    # from cost function
+    unit_cost_dumbell_chart(data = unit_cost_filtered(),
+                            input = input$cost_dumbell_input)
+    
   }) # END cost dumbbell graph
   
-
+  
   #land cost
   #START land cost barchart ----
   output$land_cost_barchart_output <- renderPlot({
@@ -95,20 +101,20 @@ unit_cost_dumbell_chart(data = unit_cost_filtered(),
   }
   
   # START ben filter df ----
-    
-    master_ben_filtered <- reactive({ 
-      filtered_data <- master %>%
-        filter(pop == input$spp_input
-               # ,rst_typ == c(input$ben_rest_input)
-               ) %>%
-        mutate(rst_typ=factor(rst_typ, levels = c("Floodplain", "Engineered Log Jams",
-                                                     "Riparian Planting"))) %>%
-        mutate(sbbsn_n=factor(sbbsn_n)) %>% 
-        mutate(n_diff=as.numeric(n_diff)) %>% 
-        mutate(sbbsn_n = fct_reorder(sbbsn_n, n_diff, .fun = sum)) %>% 
-        filter(n_diff>0) %>% 
-        as.data.frame()
-    })
+  
+  master_ben_filtered <- reactive({ 
+    filtered_data <- master %>%
+      filter(pop == input$spp_input
+             # ,rst_typ == c(input$ben_rest_input)
+      ) %>%
+      mutate(rst_typ=factor(rst_typ, levels = c("Floodplain", "Engineered Log Jams",
+                                                "Riparian Planting"))) %>%
+      mutate(sbbsn_n=factor(sbbsn_n)) %>% 
+      mutate(n_diff=as.numeric(n_diff)) %>% 
+      mutate(sbbsn_n = fct_reorder(sbbsn_n, n_diff, .fun = sum)) %>% 
+      filter(n_diff>0) %>% 
+      as.data.frame()
+  })
   
   
   
@@ -118,7 +124,7 @@ unit_cost_dumbell_chart(data = unit_cost_filtered(),
     spawner_barchart2(data = master_ben_filtered(), spp=input$spp_input)
   })
   
-   
+  
   # }) # END ben graph
   
   ##BEN TAB END
@@ -138,7 +144,7 @@ unit_cost_dumbell_chart(data = unit_cost_filtered(),
              rst_typ == c(input$cost_effectiveness_input), 
              sbbsn_n != "Mainstem") %>%
       as.data.frame()  
-  
+    
   }) # END cost effectivness filter df
   
   
@@ -148,7 +154,7 @@ unit_cost_dumbell_chart(data = unit_cost_filtered(),
     
     # from cost function 
     cost_effectiveness_bar(data = master_cost_effectiveness_filtered(), 
-                       input = input$cost_effectiveness_input)
+                           input = input$cost_effectiveness_input)
     
   }) # END cost effectiveness graph
   
