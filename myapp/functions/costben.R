@@ -124,7 +124,89 @@ ag_land_price_barchart<- ag_land_cost %>%
 
 
 
+# cost per acre/mile dumbell chart function 
+unit_cost_dumbell_chart <- #plot for avg per acre or per mile
 
+#    ggplot(data = unit_cost_master, aes(group = restoration)) +
+#   # create dumbbells ----
+# geom_segment(aes(x = lower_average_cost, xend = upper_average_cost,
+#                  y = fct_reorder(subbasin, upper_average_cost),
+#                  yend = subbasin),
+#              color = "grey",
+#              size = 1.5
+# ) + # reorder occupation by avg_salary here
+#   geom_point(aes(x = lower_average_cost, y = subbasin,
+#                  color = restoration, group = restoration), size = 3, color = "#28AFB0") +
+#   geom_point(aes(x = upper_average_cost, y = subbasin,
+#                  color = restoration, group = restoration), size = 3, color = "#03045E") +
+#   # axis breaks & $ labels ----
+# # scale_x_continuous(labels = scales::label_dollar(scale = 0.000001, suffix = "M")) +
+# # pushing y axis labels to edhe of data
+# labs(x = "Cost Per Acre",
+#      y = "",
+#      title = paste( "FP Habitat Restoration Costs")) +
+#   theme_minimal() +
+#   theme(plot.title.position = "plot",
+#         axis.text.x = element_text(size = 14),
+#         axis.text.y = element_text(size = 14),
+#         axis.title.x = element_text(size = 16, margin = margin(t = 15)),
+#         plot.title = element_text(size = 20, margin = margin(b = 15)))
+
+  
+  function(data, input) {
+  #plot for avg per acre or per mile
+  ggplot(data = data, aes(group = restoration)) +
+    # create dumbbells ----
+  geom_segment(aes(x = lower_average_cost, xend = upper_average_cost,
+                   y = fct_reorder(subbasin, upper_average_cost),
+                   yend = subbasin),
+               color = "grey",
+               size = 1.5
+  ) + # reorder occupation by avg_salary here
+    geom_point(aes(x = lower_average_cost, y = subbasin,
+                   color = restoration, group = restoration), size = 3, color = "#28AFB0") +
+    geom_point(aes(x = upper_average_cost, y = subbasin,
+                   color = restoration, group = restoration), size = 3, color = "#03045E") +
+    # axis breaks & $ labels ----
+  # scale_x_continuous(labels = scales::label_dollar(scale = 0.000001, suffix = "M")) +
+  # pushing y axis labels to edhe of data
+  labs(x = "Cost Per Acre",
+       y = "",
+       title = paste(input, "Habitat Restoration Costs")) +
+    theme_minimal() +
+    theme(plot.title.position = "plot",
+          axis.text.x = element_text(size = 14),
+          axis.text.y = element_text(size = 14),
+          axis.title.x = element_text(size = 16, margin = margin(t = 15)),
+          plot.title = element_text(size = 20, margin = margin(b = 15)))
+
+  
+  
+  # ggplot(data = data, aes(group = rst_typ)) +
+  #   # create dumbbells ----
+  # geom_segment(aes(x = ttl_lw_, xend = ttl_pp_,
+  #                  y = fct_reorder(sbbsn_n, ttl_pp_), 
+  #                  yend = sbbsn_n),
+  #              color = "grey",
+  #              size = 1.5
+  # ) + # reorder occupation by avg_salary here
+  #   geom_point(aes(x = ttl_lw_, y = sbbsn_n, 
+  #                  color = rst_typ, group = rst_typ), size = 3, color = "#28AFB0") +
+  #   geom_point(aes(x = ttl_pp_, y = sbbsn_n,
+  #                  color = rst_typ, group = rst_typ), size = 3, color = "#03045E") +
+  #   # axis breaks & $ labels ----
+  # scale_x_continuous(labels = scales::label_dollar(scale = 0.000001, suffix = "M")) +
+  #   # pushing y axis labels to edhe of data 
+  #   labs(x = "Total Cost ($ million)",
+  #        y = "",
+  #        title = paste(input, "Habitat Restoration Costs")) +
+  #   theme_minimal() +
+  #   theme(plot.title.position = "plot",
+  #         axis.text.x = element_text(size = 14),  
+  #         axis.text.y = element_text(size = 14),
+  #         axis.title.x = element_text(size = 16, margin = margin(t = 15)),
+  #         plot.title = element_text(size = 20, margin = margin(b = 15)))
+}
 
 
 

@@ -13,6 +13,8 @@ server <- function(input, output) {
   ##MAP TAB END
   
   ##COST TAB
+  
+  # total cost
   # START cost dumbbell filter df ----
   
   master_cost_filtered <- reactive({ 
@@ -35,8 +37,27 @@ server <- function(input, output) {
     
   }) # END cost dumbbell graph
   
-
+  #unit cost
+  ## filter for unit cost
+  unit_cost_filtered <- reactive({ 
+    
+    unit_cost_master %>% 
+      filter(restoration == c(input$cost_dumbell_input))
+    
+  }) # END unit cost dumbbell filter df
   
+  # START UNIT cost dumbell graph
+  output$unit_cost_dumbell_output <- renderPlot({ 
+    # unit_cost_dumbell_chart
+
+# from cost function
+unit_cost_dumbell_chart(data = unit_cost_filtered(),
+                   input = input$cost_dumbell_input)
+
+  }) # END cost dumbbell graph
+  
+
+  #land cost
   #START land cost barchart ----
   output$land_cost_barchart_output <- renderPlot({
     

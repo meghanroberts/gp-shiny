@@ -71,6 +71,34 @@ rp<-read_csv(here("myapp", "data", "not_processed", "average_rp_costs.csv")) %>%
   mutate(upper_average_cost=as.numeric(upper_average_cost)) 
 
 avg_master<-full_join(elj, fp)
-avg_master<-full_join(avg_master, rp)
+avg_master<-full_join(avg_master, rp) %>% 
+  mutate(restoration=gsub("rp", "Riparian Planting", restoration)) %>% 
+  mutate(restoration=gsub("elj", "Engineered Log Jams", restoration))
 
 write.csv(avg_master, here("myapp", "data", "processed", "unit_cost.csv"))
+
+#plot for avg per acre or per mile
+ggplot(data = avg_master, aes(group = restoration)) +
+  # create dumbbells ----
+geom_segment(aes(x = lower_average_cost, xend = upper_average_cost,
+                 y = fct_reorder(subbasin, upper_average_cost), 
+                 yend = subbasin),
+             color = "grey",
+             size = 1.5
+) + # reorder occupation by avg_salary here
+  geom_point(aes(x = lower_average_cost, y = subbasin, 
+                 color = restoration, group = restoration), size = 3, color = "#28AFB0") +
+  geom_point(aes(x = upper_average_cost, y = subbasin,
+                 color = restoration, group = restoration), size = 3, color = "#03045E") +
+  # axis breaks & $ labels ----
+# scale_x_continuous(labels = scales::label_dollar(scale = 0.000001, suffix = "M")) +
+  # pushing y axis labels to edhe of data 
+  labs(x = "Cost Per Acre",
+       y = "",
+       title = paste( "FP Habitat Restoration Costs")) +
+  theme_minimal() +
+  theme(plot.title.position = "plot",
+        axis.text.x = element_text(size = 14),  
+        axis.text.y = element_text(size = 14),
+        axis.title.x = element_text(size = 16, margin = margin(t = 15)),
+        plot.title = element_text(size = 20, margin = margin(b = 15)))

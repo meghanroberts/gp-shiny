@@ -17,6 +17,9 @@ NA_subs <- st_read("data/processed/map_data/NA_subs.shp")
 demo <- st_read("data/processed/demo_transformed.shp")
 # ag land cost data
 ag_land_cost <- read_csv("data/processed/flood_ag_subba_sum.csv")
+#unit cost master
+unit_cost_master <- read_csv("data/processed/unit_cost.csv") 
+
 
 
 # sources
