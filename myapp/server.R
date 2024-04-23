@@ -41,16 +41,27 @@ server <- function(input, output) {
   ## filter for unit cost
   unit_cost_filtered <- reactive({ 
     
-    # unit_cost_master %>% 
-    #   filter(restoration == c(input$cost_dumbell_input))
-    
     if (input$cost_dumbell_input == "Engineered Log Jams") {
       unit_cost_master %>%
-        filter(metric == input$elj_unit_input)
-    } else {
-      unit_cost_master
+        filter(metric == input$elj_unit_input)} 
+    else if (input$cost_dumbell_input == "Floodplain") {
+      unit_cost_master %>% 
+        filter(restoration == "Floodplain")
     }
+    else if (input$cost_dumbell_input == "Riparian Planting") {
+      unit_cost_master %>% 
+        filter(restoration == "Riparian Planting")}
+    
   }) # END unit cost dumbbell filter df
+  
+# 
+#   ##CHECK TABLE
+#   # Render the filtered dataframe as a table
+#   output$filtered_table <- renderDataTable({
+#     unit_cost_filtered()
+#   })
+
+  
   
   # START UNIT cost dumbell graph
   output$unit_cost_dumbell_output <- renderPlot({ 

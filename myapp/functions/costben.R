@@ -21,7 +21,7 @@ cost_dumbell_chart <- function(data, input) {
     # pushing y axis labels to edhe of data 
     labs(x = "Total Cost ($ million)",
          y = "",
-         title = paste(input, "Habitat Restoration Costs")) +
+         title = paste(input, "Total Habitat Restoration Costs")) +
     theme_minimal() +
     theme(plot.title.position = "plot",
           axis.text.x = element_text(size = 14),  
@@ -123,15 +123,15 @@ ag_land_price_barchart<- ag_land_cost %>%
         panel.grid.minor.x  = element_blank())
 
 
-# map_metric_to_label <- function(metric) {
-#   # Define a lookup table or switch statement to map metric to label
-#   switch(metric[[1]], # Select the first element of the vector
-#          "per_acre" = "Cost per Acre",
-#          "per_mile" = "Cost per Mile",
-#          "per_structure" = "Cost per Structure",
-#          # Add more cases for additional metrics
-#          "NA")
-# }
+map_metric_to_label <- function(metric) {
+  # Define a lookup table or switch statement to map metric to label
+  switch(metric[1], # Select the first element of the vector
+         "per_acre" = "Cost Per Acre",
+         "per_mile" = "Cost Per Mile",
+         "per_structure" = "Cost Per Structure",
+         # Add more cases for additional metrics
+         "NA")
+}
 
 
   # cost per acre/mile dumbell chart function 
@@ -139,7 +139,7 @@ ag_land_price_barchart<- ag_land_cost %>%
     
     function(data, input) {
       
-      x_label <- unique(data$metric)
+      x_label <- map_metric_to_label(unique(data$metric))
       
       #plot for avg per acre or per mile
       ggplot(data = data, aes(group = restoration)) +
@@ -159,7 +159,7 @@ ag_land_price_barchart<- ag_land_cost %>%
         # pushing y axis labels to edhe of data
         labs(x = x_label,
              y = "",
-             title = paste(input, "Habitat Restoration Costs")) +
+             title = paste(input, "Habitat Restoration", x_label)) +
         theme_minimal() +
         theme(plot.title.position = "plot",
               axis.text.x = element_text(size = 14),

@@ -140,9 +140,13 @@ body <- dashboardBody(
                   
               ), # END input box
               
+              
               # unit cost dumbell ----
               box(width = 12, 
-                  
+# 
+#                   # Display the resulting dataframe
+#                   dataTableOutput("filtered_table"),
+
                   # cost dumbell output ----
                   plotOutput(outputId = "unit_cost_dumbell_output")%>% 
                     shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
