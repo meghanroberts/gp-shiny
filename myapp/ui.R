@@ -24,8 +24,12 @@ sidebar <- dashboardSidebar(
 body <- dashboardBody(
   
   # set theme
-  fresh::use_theme("shinydashboard-fresh-theme.css"),
+  # fresh::use_theme("shinydashboard-fresh-theme5.css"),
   
+  # link stylesheet
+  tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "styles.css"),
+  ),
   
   tags$head(
     tags$style(HTML("

@@ -1,0 +1,45 @@
+/* Header */
+.skin-blue .main-header .logo {
+  background-color: #031927;
+/* font-family: "helvetica",  serif, Times, "Times New Roman"; */
+/* font-size: 20px; */
+}
+
+.skin-blue .main-header .logo:hover{
+  background-color: #031927
+  
+}
+
+.skin-blue .main-header .navbar {
+    background-color: #031927;
+}
+
+/* toggle button when hovered  */                    
+.skin-blue .main-header .navbar .sidebar-toggle:hover{
+         background-color: #1D394B;
+         
+}
+
+
+
+/* Side bar */
+.skin-blue .main-sidebar {
+  background-color: #3C787E ; 
+}
+
+.skin-blue .sidebar a {
+    color: white;
+
+    border-left-color: #3C787E;
+}
+
+/* active sidebar menu item */
+.skin-blue .main-sidebar .sidebar .sidebar-menu .active a{
+        background-color: #1D394B;
+
+}
+
+/* sidebar menuitems when mouse hover */
+.skin-blue .main-sidebar .sidebar .sidebar-menu a:hover{
+        background-color: #1D394B;
+}

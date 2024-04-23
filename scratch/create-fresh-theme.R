@@ -6,22 +6,20 @@ create_theme(
   
   # change "light-blue"/"primary" color
   adminlte_color(
-    light_blue = "#3B413C" # dark blue
+    light_blue = "#150B5A" # dark blue
   ),
   
   # dashboardBody styling (includes boxes)
   adminlte_global(
-    content_bg = "#FFFFFF"
+    content_bg = "white" # blush pink
   ),
   
   # dashboardSidebar styling
   adminlte_sidebar(
-    width = "300px", 
-    dark_bg = "#3B413C", # light blue
-    dark_hover_bg = "cyan4", # magenta
-    dark_color = "#FFFFFF" # red
+    # width = "400px", 
+    dark_bg = "lightgrey", # light blue
+    dark_hover_bg = "cyan3", # magenta
+    dark_color = "#150B5A" # red
   ),
-  
-  output_file = "www/shinydashboard-fresh-theme.css" # generate css file & save to www/
+  output_file = "myapp/www/shinydashboard-fresh-theme5.css" # generate css file & save to www/
 )
-
