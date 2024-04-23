@@ -157,7 +157,7 @@ map_metric_to_label <- function(metric) {
         # axis breaks & $ labels ----
       scale_x_continuous(labels = scales::label_dollar(scale = 0.001, suffix = "K")) +
         # pushing y axis labels to edhe of data
-        labs(x = x_label,
+        labs(x = paste(x_label, "($ thousand)"),
              y = "",
              title = paste(input, "Habitat Restoration", x_label)) +
         theme_minimal() +

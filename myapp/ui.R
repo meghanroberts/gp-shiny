@@ -132,6 +132,12 @@ body <- dashboardBody(
                   title = tagList( 
                     strong("Restoration Costs")),
                   includeMarkdown("text/cost.md"),
+                  conditionalPanel(
+                    condition = "input.cost_dumbell_input == 'Floodplain'", # Only show when cost_dumbell_input is Floodplain
+                    includeMarkdown("text/landcosts.md")),
+                  conditionalPanel(
+                    condition = "input.cost_dumbell_input == 'Engineered Log Jams'", # Only show when cost_dumbell_input is Floodplain
+                    includeMarkdown("text/elj_extra.md")),
                   restoration_action_pickerInput(inputId = "cost_dumbell_input"),
                   conditionalPanel(
                     condition = "input.cost_dumbell_input == 'Engineered Log Jams'",
@@ -143,9 +149,6 @@ body <- dashboardBody(
               
               # unit cost dumbell ----
               box(width = 12, 
-# 
-#                   # Display the resulting dataframe
-#                   dataTableOutput("filtered_table"),
 
                   # cost dumbell output ----
                   plotOutput(outputId = "unit_cost_dumbell_output")%>% 
@@ -162,22 +165,15 @@ body <- dashboardBody(
                   
               ), # END cost dumbell box
               
-              
-              
-              box(width=12, #takes on width of the column
-                  title = tagList( 
-                    strong("Additional Costs")),
-                  includeMarkdown("text/landcosts.md")
-                  
-              ), # END input box
-              
+  
               # land cost barchart ----
               box(width = 12, 
                   
-                  # land cost barchart output ----
-                  plotOutput(outputId = "land_cost_barchart_output")%>% 
-                    shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
-                  
+                  conditionalPanel(
+                    condition = "input.cost_dumbell_input == 'Floodplain'", # Only show when cost_dumbell_input is Floodplain
+                    plotOutput(outputId = "land_cost_barchart_output")%>%
+                      shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
+                  )
               ), # END land cost barchart box
               
             ) # END fluidRow
