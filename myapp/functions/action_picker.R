@@ -31,5 +31,13 @@ species_pickerInput <- function(inputId) {
               multiple = FALSE)
 }
 
-
+# function for creating an action picker that allows for either per mile or per structure to be selected
+elj_unit_pickerInput <- function(inputId) {
+  
+  pickerInput(inputId = inputId, label = "Pick Units:",
+              choices = c("Per Mile"="per_mile", "Per Structure"="per_structure"),
+              selected = "Chinook",
+              options = pickerOptions(actionsBox = TRUE),
+              multiple = FALSE)
+}
 

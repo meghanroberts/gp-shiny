@@ -136,9 +136,26 @@ body <- dashboardBody(
                   title = tagList( 
                     strong("Restoration Costs")),
                   includeMarkdown("text/cost.md"),
-                  restoration_action_pickerInput(inputId = "cost_dumbell_input")
+                  restoration_action_pickerInput(inputId = "cost_dumbell_input"),
+                  conditionalPanel(
+                    condition = "input.cost_dumbell_input == 'Engineered Log Jams'",
+                    elj_unit_pickerInput(inputId="elj_unit_input")
+                  )
                   
               ), # END input box
+              
+              
+              # unit cost dumbell ----
+              box(width = 12, 
+# 
+#                   # Display the resulting dataframe
+#                   dataTableOutput("filtered_table"),
+
+                  # cost dumbell output ----
+                  plotOutput(outputId = "unit_cost_dumbell_output")%>% 
+                    shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
+                  
+              ), # END unit cost dumbell box
               
               # cost dumbell ----
               box(width = 12, 
@@ -148,6 +165,8 @@ body <- dashboardBody(
                     shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
                   
               ), # END cost dumbell box
+              
+              
               
               box(width=12, #takes on width of the column
                   title = tagList( 
