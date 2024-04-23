@@ -132,7 +132,11 @@ body <- dashboardBody(
                   title = tagList( 
                     strong("Restoration Costs")),
                   includeMarkdown("text/cost.md"),
-                  restoration_action_pickerInput(inputId = "cost_dumbell_input")
+                  restoration_action_pickerInput(inputId = "cost_dumbell_input"),
+                  conditionalPanel(
+                    condition = "input.cost_dumbell_input == 'Engineered Log Jams'",
+                    elj_unit_pickerInput(inputId="elj_unit_input")
+                  )
                   
               ), # END input box
               
