@@ -33,4 +33,44 @@ cost_graph_fun(master, "Floodplain")
 
 
 
+############# cost per acre
+library(here)
+library(janitor)
+elj<-read_csv(here("myapp", "data", "not_processed", "average_elj_costs.csv")) %>% clean_names()%>% 
+  mutate(lower_average_cost = gsub("\\$ ", "", lower_average_cost)) %>% 
+  mutate(upper_average_cost = gsub("\\$ ", "", upper_average_cost)) %>% 
+  mutate(lower_average_cost = gsub(",", "", lower_average_cost)) %>%
+  mutate(upper_average_cost = gsub(",", "", upper_average_cost)) %>% 
+  mutate(lower_average_cost=as.numeric(lower_average_cost)) %>% 
+  mutate(upper_average_cost=as.numeric(upper_average_cost)) 
 
+fp<-read_csv(here("myapp", "data", "not_processed", "average_fp_costs.csv")) %>% 
+  select(c("Subbasin", "Restoration", "Metric", "Lower Average Cost", "Upper Average Cost")) %>%
+  rename("lower_avg_cost"="Lower Average Cost") %>% 
+  rename("upper_avg_cost"="Upper Average Cost") %>% 
+  mutate(lower_avg_cost = gsub("\\$ ", "", lower_avg_cost)) %>% 
+  mutate(lower_avg_cost = str_trim(lower_avg_cost, side = "left"))%>% 
+  mutate(lower_avg_cost = gsub(",", "", lower_avg_cost)) %>% 
+  mutate(upper_avg_cost = gsub("\\$ ", "", upper_avg_cost)) %>% 
+  mutate(upper_avg_cost = gsub(",", "", upper_avg_cost)) %>% 
+  mutate(upper_avg_cost = str_trim(upper_avg_cost, side = "left")) %>% 
+  mutate(lower_avg_cost=as.numeric(lower_avg_cost)) %>% 
+  mutate(upper_avg_cost=as.numeric(upper_avg_cost)) %>% 
+  group_by(Subbasin) %>% mutate(upper_average_cost=sum(upper_avg_cost), 
+                                lower_average_cost=sum(lower_avg_cost),
+                                Restoration="Floodplain", 
+                                Metric="per acre") %>% 
+  unique() %>% clean_names %>% select(-c(lower_avg_cost, upper_avg_cost))
+
+rp<-read_csv(here("myapp", "data", "not_processed", "average_rp_costs.csv")) %>% clean_names()%>% 
+  mutate(lower_average_cost = gsub("\\$ ", "", lower_average_cost)) %>% 
+  mutate(upper_average_cost = gsub("\\$ ", "", upper_average_cost)) %>% 
+  mutate(lower_average_cost = gsub(",", "", lower_average_cost)) %>%
+  mutate(upper_average_cost = gsub(",", "", upper_average_cost)) %>% 
+  mutate(lower_average_cost=as.numeric(lower_average_cost)) %>% 
+  mutate(upper_average_cost=as.numeric(upper_average_cost)) 
+
+avg_master<-full_join(elj, fp)
+avg_master<-full_join(avg_master, rp)
+
+write.csv(avg_master, here("myapp", "data", "processed", "unit_cost.csv"))
