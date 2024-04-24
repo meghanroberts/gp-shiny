@@ -37,8 +37,8 @@ leaflet <-
     fillOpacity = 0.7,
     popup = paste0("<strong>", "Subbasin Name: ", "</strong>", map_data$sbbsn_n, "<br>",
                    "<em>", "no predicted increase in spawners", "</em>")) %>% 
-  addScaleBar(position = "bottomleft") 
-
+  addScaleBar(position = "bottomleft") %>% 
+  addEasyButton(easyButton(icon = icon("arrows-to-dot"), onClick = JS("function(btn, map){ map.setView([48.2, -121.9], 9);}")))
 
 ##START OF DEMO MAP
 
@@ -73,19 +73,21 @@ demo_map<-leaflet(demo) |>
                              "<strong>", "Unemployment Score: ", "</strong>", demo$Sbb_Un_,"<br>",
                              "<strong>", "Presence of Tribal Lands: ", "</strong>", demo$Sbb_Tr_S)) |> 
   addPolygons(
-                               data = NA_subs,
-                               weight = 1,
-                               color = "black",
-                               opacity = 1, 
-                               fillColor = "grey",
-                               fillOpacity = 0.7,
-                               popup = paste0("<strong>", "Subbasin Name: ", "</strong>", map_data$sbbsn_n, "<br>",
-                                              "<em>", "unlikely candidate for Chinook habitat restoration", "</em>")) %>% 
+    data = NA_subs,
+    weight = 1,
+    color = "black",
+    opacity = 1, 
+    fillColor = "grey",
+    fillOpacity = 0.7,
+    popup = paste0("<strong>", "Subbasin Name: ", "</strong>", map_data$sbbsn_n, "<br>",
+                   "<em>", "unlikely candidate for Chinook habitat restoration", "</em>")) %>% 
   addScaleBar(position = "bottomleft")%>% 
   addLegend(position = "bottomright", 
             # pal = color_palette,
             values = demo$Sbb_Tt_S,
             title = "Subbasin Total Score",
             opacity = 0.8, labels = breaks,
-            colors = legend)
+            colors = legend)%>% 
+  addEasyButton(easyButton(icon = icon("arrows-to-dot"), onClick = JS("function(btn, map){ map.setView([48.2, -121.9], 9);}")))
+
 

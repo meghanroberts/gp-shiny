@@ -5,6 +5,7 @@ library(shinydashboard)
 library(shinyWidgets)
 library(sf)
 library(leaflet)
+library(leaflet.extras)
 
 
 # master data 
