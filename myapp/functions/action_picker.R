@@ -36,8 +36,15 @@ elj_unit_pickerInput <- function(inputId) {
   
   pickerInput(inputId = inputId, label = "Pick Units:",
               choices = c("Per Mile"="per_mile", "Per Structure"="per_structure"),
-              selected = "Chinook",
               options = pickerOptions(actionsBox = TRUE),
               multiple = FALSE)
 }
 
+# function for choosing x-axis
+axis_Input <- function(inputId) {
+  
+  radioButtons(inputId=inputId, label = "Select data view:",
+               choices = c("Match x-axis extent to this restoration actions"="fit", "Match x-axis extent across restoration action"="extend"),
+               selected = "fit")
+
+}

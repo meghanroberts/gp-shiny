@@ -1,1 +1,1 @@
-When calculating costs for engineered log jams, streams with 
+When calculating costs for engineered log jams, streams with low energy and low transportation and material requirements, low energy and medium transportation and material requirements, and medium energy and low transportation and material requirements are reported in cost per mile. Whereas all other conditions are reported in cost per structure. *Refer to the final report for further breakdown.*
