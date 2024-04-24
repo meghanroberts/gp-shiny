@@ -73,8 +73,8 @@ spawner_barchart2 <- function(data, spp) {
     geom_col() +
     labs(fill = "Restoration Type", 
          x = "", 
-         y = paste("# Annual", full_species_name, "Spawners"),
-         title = paste("Modeled Annual", full_species_name, "Spawner Increases")) +
+         y = paste("#", full_species_name, "Spawner Increase"),
+         title = paste("Modeled", full_species_name, "Spawner Increases")) +
     coord_flip() +
     scale_fill_manual(values = restoration_colors,
                       # values = c("Riparian Planting"="#03045E", "Engineered Log Jam"="#19647E", "Floodplain"="#28AFB0"),
@@ -118,7 +118,7 @@ cost_effectiveness_bar <- function(data, input, axis) {
     x_limits <- c(0, 320000)}  # Set extended x-axis limits
   
   
-  ggplot(data = data, aes(x = fct_reorder(sbbsn_n, cb_rati), 
+  ggplot(data = data, aes(x = fct_reorder(sbbsn_n, -cb_rati), 
                           y = cb_rati)) +
     geom_col(fill = "#03045E") +
     theme_minimal() +
@@ -141,6 +141,8 @@ cost_effectiveness_bar <- function(data, input, axis) {
   
 }
 
+
+## Agricultural Land Cost
 ag_land_cost_mod <- ag_land_cost %>% 
   group_by(noaa_subba, subbasin_name) %>% 
   summarise(total_subba_cost = sum(total_subba_cost))
@@ -148,7 +150,7 @@ ag_land_cost_mod <- ag_land_cost %>%
 # Cost of ag land
 ag_land_price_barchart<- ag_land_cost_mod %>% 
   ggplot(aes(
-    x = reorder(subbasin_name, total_subba_cost),
+    x = reorder(subbasin_name, -total_subba_cost),
     y = total_subba_cost/1000000)) +
   theme_minimal() +
   geom_col(fill = "#03045E", color = "#03045E") +
@@ -199,7 +201,7 @@ map_metric_to_label <- function(metric) {
       }
       
       # Check the user's selection
-      if (axis == "extend") {
+      if (axis == "extend" && "Riparian Planting" %in% unique(data$restoration)) {
         # If user selects "Extend X-axis", change x-axis limits
         x_limits <- c(0, 250000) } # Set extended x-axis limits
       

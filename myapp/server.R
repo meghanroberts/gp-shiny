@@ -67,7 +67,6 @@ server <- function(input, output) {
     
   }) # END cost dumbbell graph
   
-  
   #land cost
   #START land cost barchart ----
   output$land_cost_barchart_output <- renderPlot({

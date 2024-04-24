@@ -151,16 +151,6 @@ body <- dashboardBody(
                   
               ), # END input box
               
-              
-              # unit cost dumbell ----
-              box(width = 12, 
-
-                  # cost dumbell output ----
-                  plotOutput(outputId = "unit_cost_dumbell_output")%>% 
-                    shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
-                 
-              ), # END unit cost dumbell box
-              
               # cost dumbell ----
               box(width = 12, 
                   
@@ -169,6 +159,19 @@ body <- dashboardBody(
                     shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
                   
               ), # END cost dumbell box
+              
+              
+              # unit cost dumbell ----
+              box(width = 12, 
+
+                  # cost dumbell output ----
+                  plotOutput(outputId = "unit_cost_dumbell_output")%>% 
+                    shinycssloaders::withSpinner(color="#03045E", type=6), #add a loading spinner
+                  conditionalPanel(
+                    condition = "input.cost_dumbell_input == 'Engineered Log Jams'", # Only show when cost_dumbell_input is Floodplain
+                    tags$em("Note that x-axis will not change for Engineered Log Jam unit cost figure since it is in $/structure and $/mile, not $/acre like floodplain and riparian planting.")),  # Add text output
+                  
+              ), # END unit cost dumbell box
               
   
               # land cost barchart ----
