@@ -33,7 +33,8 @@ server <- function(input, output) {
     
     # from cost function 
     cost_dumbell_chart(data = master_cost_filtered(), 
-                       input = input$cost_dumbell_input)
+                       input = input$cost_dumbell_input, 
+                       axis=input$axis_input)
     
   }) # END cost dumbbell graph
   
@@ -54,22 +55,15 @@ server <- function(input, output) {
     
   }) # END unit cost dumbbell filter df
   
-# 
-#   ##CHECK TABLE
-#   # Render the filtered dataframe as a table
-#   output$filtered_table <- renderDataTable({
-#     unit_cost_filtered()
-#   })
 
-  
-  
   # START UNIT cost dumbell graph
   output$unit_cost_dumbell_output <- renderPlot({ 
     # unit_cost_dumbell_chart
     
     # from cost function
     unit_cost_dumbell_chart(data = unit_cost_filtered(),
-                            input = input$cost_dumbell_input)
+                            input = input$cost_dumbell_input, 
+                            axis=input$axis_input)
     
   }) # END cost dumbbell graph
   
@@ -165,7 +159,8 @@ server <- function(input, output) {
     
     # from cost function 
     cost_effectiveness_bar(data = master_cost_effectiveness_filtered(), 
-                           input = input$cost_effectiveness_input)
+                           input = input$cost_effectiveness_input, 
+                           axis=input$ce_axis_input)
     
   }) # END cost effectiveness graph
   

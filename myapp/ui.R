@@ -146,7 +146,8 @@ body <- dashboardBody(
                   conditionalPanel(
                     condition = "input.cost_dumbell_input == 'Engineered Log Jams'",
                     elj_unit_pickerInput(inputId="elj_unit_input")
-                  )
+                  ), 
+                  axis_Input(inputId="axis_input")
                   
               ), # END input box
               
@@ -157,7 +158,7 @@ body <- dashboardBody(
                   # cost dumbell output ----
                   plotOutput(outputId = "unit_cost_dumbell_output")%>% 
                     shinycssloaders::withSpinner(color="#03045E", type=6) #add a loading spinner
-                  
+                 
               ), # END unit cost dumbell box
               
               # cost dumbell ----
@@ -222,8 +223,7 @@ body <- dashboardBody(
                     strong("Cost Effectiveness")),
                   includeMarkdown("text/ce.md"),
                   restoration_action_pickerInput(inputId = "cost_effectiveness_input"),
-                  
-                  
+                  axis_Input(inputId="ce_axis_input")
                   
               ), # END input box
               
