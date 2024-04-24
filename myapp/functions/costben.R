@@ -99,10 +99,12 @@ cost_effectiveness_bar <- function(data, input) {
   
 }
 
-
+ag_land_cost_mod <- ag_land_cost %>% 
+  group_by(noaa_subba, subbasin_name) %>% 
+  summarise(total_subba_cost = sum(total_subba_cost))
 
 # Cost of ag land
-ag_land_price_barchart<- ag_land_cost %>% 
+ag_land_price_barchart<- ag_land_cost_mod %>% 
   ggplot(aes(
     x = reorder(subbasin_name, total_subba_cost),
     y = total_subba_cost/1000000)) +
