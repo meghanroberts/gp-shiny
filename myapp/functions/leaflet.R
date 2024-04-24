@@ -81,7 +81,7 @@ demo_map<-leaflet(demo) |>
     opacity = 1, 
     fillColor = "grey",
     fillOpacity = 0.7,
-    popup = paste0("<strong>", "Subbasin Name: ", "</strong>", map_data$sbbsn_n, "<br>",
+    popup = paste0("<strong>", "Subbasin Name: ", "</strong>", NA_subs$sbbsn_n, "<br>",
                    "<em>", "unlikely candidate for Chinook habitat restoration", "</em>")) %>% 
   addScaleBar(position = "bottomleft")%>% 
   addLegend(position = "bottomright", 
