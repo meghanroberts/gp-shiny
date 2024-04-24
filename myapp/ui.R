@@ -223,8 +223,7 @@ body <- dashboardBody(
                     strong("Cost Effectiveness")),
                   includeMarkdown("text/ce.md"),
                   restoration_action_pickerInput(inputId = "cost_effectiveness_input"),
-                  
-                  
+                  axis_Input(inputId="ce_axis_input")
                   
               ), # END input box
               

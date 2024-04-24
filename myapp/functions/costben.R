@@ -92,7 +92,26 @@ spawner_barchart2 <- function(data, spp) {
 
 # Cost effectiveness 
 
-cost_effectiveness_bar <- function(data, input) {
+cost_effectiveness_bar <- function(data, input, axis) {
+  
+  # Define default x-axis limits
+  x_limits <- c(0, 250000)  # Default x-axis limits
+  
+  if ("Floodplain" %in% unique(data$rst_typ)) {
+    # If Floodplain restoration is present, adjust x-axis limits
+    x_limits <- c(0, 80000)
+  } else if ("Riparian Planting" %in% unique(data$rst_typ)) {
+    # If Riparian Planting restoration is present, adjust x-axis limits
+    x_limits <- c(0, 320000)
+  } else if ("Engineered Log Jams" %in% unique(data$rst_typ)) {
+    # If Engineered Log Jams restoration is present, adjust x-axis limits
+    x_limits <- c(0, 125000)
+  }
+  
+  # Check the user's selection
+  if (axis == "extend") {
+    # If user selects "Extend X-axis", change x-axis limits
+    x_limits <- c(0, 320000)}  # Set extended x-axis limits
   
   
   ggplot(data = data, aes(x = fct_reorder(sbbsn_n, cb_rati), 
@@ -101,12 +120,12 @@ cost_effectiveness_bar <- function(data, input) {
     theme_minimal() +
     labs( 
       x = "", 
-      y = "Cost Effectivness ($/Chinook Spawner)",
+      y = "Cost Effectiveness ($/Chinook Spawner)",
       title = paste("Cost Effectiveness of", input, "Habitat Restoration")) +
     # caption = "Data Source: Beechie, T. J., Goodman, A., Stefankiv, O., Timpane-Padgham, B., & Lowe, M. (2023). \n Habitat Assessment and Restoration Planning (HARP) Model for the Snohomish and Stillaguamish \n River Basins (noaa:48860).") +
     
     scale_y_continuous(expand = c(0,0), 
-                       labels = scales::label_dollar(scale = 0.001, suffix = "K")) +
+                       labels = scales::label_dollar(scale = 0.001, suffix = "K"), limits = x_limits) +
     coord_flip() +
     theme(plot.title.position = "plot",
           axis.text.x = element_text(size = 14),  

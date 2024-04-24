@@ -159,7 +159,8 @@ server <- function(input, output) {
     
     # from cost function 
     cost_effectiveness_bar(data = master_cost_effectiveness_filtered(), 
-                           input = input$cost_effectiveness_input)
+                           input = input$cost_effectiveness_input, 
+                           axis=input$ce_axis_input)
     
   }) # END cost effectiveness graph
   

@@ -44,7 +44,7 @@ elj_unit_pickerInput <- function(inputId) {
 axis_Input <- function(inputId) {
   
   radioButtons(inputId=inputId, label = "Select data view:",
-               choices = c("Match x-axis extent to this restoration actions"="fit", "Match x-axis extent across restoration action"="extend"),
+               choices = c("Match x-axis extent to this restoration action"="fit", "Match x-axis extent across restoration actions"="extend"),
                selected = "fit")
 
 }
